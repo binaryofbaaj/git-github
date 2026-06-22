@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Understand the difference between Git and GitHub. Git is the tool on your computer. GitHub is the cloud platform. Learn the distinction with clear analogies.">
+  <title>Git vs GitHub — Git & GitHub Guide</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <div class="scroll-progress"></div>
+
+  <nav class="navbar">
+    <div class="navbar-left">
+      <button class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <a href="index.html" class="navbar-logo"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#58A6FF" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#58A6FF"/><line x1="16" y1="2" x2="16" y2="12" stroke="#58A6FF" stroke-width="2"/><line x1="16" y1="20" x2="16" y2="30" stroke="#58A6FF" stroke-width="2"/></svg>Git Guide</a>
+      <span class="navbar-title">Git vs GitHub</span>
+    </div>
+    <div class="navbar-right">
+      <a href="page-01-what-is-git.html" class="nav-btn">← Prev</a>
+      <a href="page-03-installation-setup.html" class="nav-btn primary">Next →</a>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <aside class="sidebar">
+    <div class="sidebar-section-title">Getting Started</div>
+    <a href="index.html" class="sidebar-link"><span class="check"></span><span class="link-text">Welcome</span></a>
+    <a href="page-01-what-is-git.html" class="sidebar-link"><span class="check"></span><span class="link-text">1. What Is Git?</span></a>
+    <a href="page-02-git-vs-github.html" class="sidebar-link active"><span class="check">✓</span><span class="link-text">2. Git vs GitHub</span></a>
+    <a href="page-03-installation-setup.html" class="sidebar-link"><span class="check"></span><span class="link-text">3. Installation & Setup</span></a>
+    <div class="sidebar-section-title">Core Concepts</div>
+    <a href="page-04-repository.html" class="sidebar-link"><span class="check"></span><span class="link-text">4. Repositories</span></a>
+    <a href="page-05-staging-area.html" class="sidebar-link"><span class="check"></span><span class="link-text">5. The Staging Area</span></a>
+    <a href="page-06-commits.html" class="sidebar-link"><span class="check"></span><span class="link-text">6. Making Commits</span></a>
+    <a href="page-07-branches.html" class="sidebar-link"><span class="check"></span><span class="link-text">7. Branches</span></a>
+    <a href="page-08-merging.html" class="sidebar-link"><span class="check"></span><span class="link-text">8. Merging</span></a>
+    <div class="sidebar-section-title">Collaboration</div>
+    <a href="page-09-remote-repos.html" class="sidebar-link"><span class="check"></span><span class="link-text">9. Remote Repos</span></a>
+    <a href="page-10-clone-fork.html" class="sidebar-link"><span class="check"></span><span class="link-text">10. Clone & Fork</span></a>
+    <a href="page-11-pull-requests.html" class="sidebar-link"><span class="check"></span><span class="link-text">11. Pull Requests</span></a>
+    <div class="sidebar-section-title">Intermediate</div>
+    <a href="page-12-git-log-history.html" class="sidebar-link"><span class="check"></span><span class="link-text">12. History & Log</span></a>
+    <a href="page-13-undoing-changes.html" class="sidebar-link"><span class="check"></span><span class="link-text">13. Undoing Changes</span></a>
+    <a href="page-14-gitignore.html" class="sidebar-link"><span class="check"></span><span class="link-text">14. .gitignore</span></a>
+    <a href="page-15-tags-releases.html" class="sidebar-link"><span class="check"></span><span class="link-text">15. Tags & Releases</span></a>
+    <div class="sidebar-section-title">Advanced</div>
+    <a href="page-16-collaboration-workflow.html" class="sidebar-link"><span class="check"></span><span class="link-text">16. Team Workflows</span></a>
+    <a href="page-17-github-features.html" class="sidebar-link"><span class="check"></span><span class="link-text">17. GitHub Features</span></a>
+    <a href="page-18-ssh-authentication.html" class="sidebar-link"><span class="check"></span><span class="link-text">18. SSH & Auth</span></a>
+    <a href="page-19-best-practices.html" class="sidebar-link"><span class="check"></span><span class="link-text">19. Best Practices</span></a>
+    <a href="page-20-cheatsheet.html" class="sidebar-link"><span class="check"></span><span class="link-text">20. Cheat Sheet</span></a>
+  </aside>
+
+  <main class="main-wrapper" id="main-content">
+    <div class="page-content">
+      <nav class="breadcrumbs"><a href="index.html">Home</a><span class="separator">›</span><span class="current">Git vs GitHub</span></nav>
+
+      <header class="page-header">
+        <span class="page-number">Chapter 2 of 20</span>
+        <div class="reading-time">📖 <span class="reading-time-value"></span></div>
+        <h1>Git vs GitHub: What's the Difference?</h1>
+        <p class="page-subtitle">They sound alike, but they're very different things. One lives on your computer, the other lives on the internet.</p>
+      </header>
+
+      <!-- The Confusion -->
+      <section class="animate-on-view">
+        <h2>The #1 Beginner Confusion</h2>
+        <p>Almost every beginner mixes up Git and GitHub. Don't worry — here's the simple breakdown:</p>
+
+        <div class="comparison-grid">
+          <div class="comparison-card" style="border-top: 3px solid var(--accent-orange);">
+            <h4 style="color: var(--accent-orange); margin-top:0;">🖥️ Git</h4>
+            <ul style="padding-left: var(--space-md);">
+              <li>A <strong>tool</strong> (software program)</li>
+              <li>Lives on <strong>YOUR computer</strong></li>
+              <li>Tracks file changes <strong>locally</strong></li>
+              <li>Works <strong>offline</strong></li>
+              <li>Created by Linus Torvalds (2005)</li>
+              <li><strong>Free & open source</strong></li>
+            </ul>
+          </div>
+          <div class="comparison-card" style="border-top: 3px solid var(--accent-blue);">
+            <h4 style="color: var(--accent-blue); margin-top:0;">☁️ GitHub</h4>
+            <ul style="padding-left: var(--space-md);">
+              <li>A <strong>website</strong> (platform / service)</li>
+              <li>Lives on <strong>the internet</strong></li>
+              <li>Stores your Git repos <strong>online</strong></li>
+              <li>Requires <strong>internet connection</strong></li>
+              <li>Founded by Tom Preston-Werner (2008)</li>
+              <li><strong>Free tier</strong> + paid plans</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="analogy-card">
+          <div class="analogy-title">Real-World Analogy</div>
+          <p><strong>Git is Microsoft Word.</strong> GitHub is Google Drive. You use Word to write and edit your documents on your computer. You use Google Drive to store them online so others can access them too. You can use Word without Google Drive, but they work great together.</p>
+        </div>
+      </section>
+
+      <!-- Side by Side Diagram -->
+      <section class="animate-on-view">
+        <h2>How They Work Together</h2>
+
+        <div class="diagram-container" data-animate>
+          <svg viewBox="0 0 700 300" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+            <title>Git on your laptop connected to GitHub in the cloud</title>
+            <desc>Your computer runs Git locally, and syncs with GitHub online for backup and collaboration</desc>
+            <!-- Laptop -->
+            <rect x="40" y="80" width="220" height="140" rx="12" fill="#1C2129" stroke="#D29922" stroke-width="2" class="svg-fade-in"/>
+            <rect x="60" y="100" width="180" height="90" rx="6" fill="#0D1117" class="svg-fade-in"/>
+            <text x="150" y="140" text-anchor="middle" fill="#D29922" font-size="14" font-weight="bold" font-family="Inter, sans-serif" class="svg-fade-in">🖥️ Your Computer</text>
+            <text x="150" y="165" text-anchor="middle" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in">Git runs here</text>
+            <rect x="100" y="220" width="100" height="8" rx="4" fill="#30363D" class="svg-fade-in"/>
+
+            <!-- Arrows -->
+            <line x1="270" y1="130" x2="420" y2="130" stroke="#3FB950" stroke-width="2" stroke-dasharray="6,4" class="svg-draw" stroke-dashoffset="200" style="animation-delay:0.6s"/>
+            <polygon points="415,125 425,130 415,135" fill="#3FB950" class="svg-fade-in" style="animation-delay:1s"/>
+            <text x="345" y="120" text-anchor="middle" fill="#3FB950" font-size="11" font-weight="bold" font-family="JetBrains Mono, monospace" class="svg-fade-in" style="animation-delay:1s">git push</text>
+
+            <line x1="420" y1="170" x2="270" y2="170" stroke="#58A6FF" stroke-width="2" stroke-dasharray="6,4" class="svg-draw" stroke-dashoffset="200" style="animation-delay:0.8s"/>
+            <polygon points="275,165 265,170 275,175" fill="#58A6FF" class="svg-fade-in" style="animation-delay:1.2s"/>
+            <text x="345" y="190" text-anchor="middle" fill="#58A6FF" font-size="11" font-weight="bold" font-family="JetBrains Mono, monospace" class="svg-fade-in" style="animation-delay:1.2s">git pull</text>
+
+            <!-- GitHub Cloud -->
+            <rect x="430" y="80" width="230" height="140" rx="12" fill="#1C2129" stroke="#58A6FF" stroke-width="2" class="svg-fade-in" style="animation-delay:0.3s"/>
+            <rect x="450" y="100" width="190" height="90" rx="6" fill="#0D1117" class="svg-fade-in" style="animation-delay:0.3s"/>
+            <text x="545" y="140" text-anchor="middle" fill="#58A6FF" font-size="14" font-weight="bold" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.3s">☁️ GitHub.com</text>
+            <text x="545" y="165" text-anchor="middle" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.3s">Your repo lives online</text>
+
+            <!-- Team members -->
+            <text x="440" y="270" fill="#BC8CFF" font-size="24" class="svg-fade-in" style="animation-delay:1.4s">👩‍💻</text>
+            <text x="510" y="270" fill="#BC8CFF" font-size="24" class="svg-fade-in" style="animation-delay:1.5s">👨‍💻</text>
+            <text x="580" y="270" fill="#BC8CFF" font-size="24" class="svg-fade-in" style="animation-delay:1.6s">👩‍💻</text>
+            <text x="475" y="295" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:1.6s">Teammates can also push & pull</text>
+          </svg>
+          <p class="diagram-caption">Git syncs your local work with GitHub's cloud servers using <code>push</code> and <code>pull</code></p>
+        </div>
+      </section>
+
+      <!-- Venn Diagram -->
+      <section class="animate-on-view">
+        <h2>What Each One Does</h2>
+
+        <div class="diagram-container" data-animate>
+          <svg viewBox="0 0 700 280" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+            <title>Venn diagram of Git vs GitHub capabilities</title>
+            <!-- Git circle -->
+            <circle cx="270" cy="140" r="130" fill="rgba(210, 153, 34, 0.1)" stroke="#D29922" stroke-width="2" class="svg-fade-in"/>
+            <text x="180" y="70" fill="#D29922" font-size="14" font-weight="bold" font-family="Inter, sans-serif" class="svg-fade-in">Git Only</text>
+            <text x="170" y="100" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.2s">• Track file changes</text>
+            <text x="170" y="120" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.3s">• Create branches</text>
+            <text x="170" y="140" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.4s">• Merge changes</text>
+            <text x="170" y="160" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.5s">• View history</text>
+            <text x="170" y="180" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.6s">• Works offline</text>
+
+            <!-- Overlap -->
+            <circle cx="430" cy="140" r="130" fill="rgba(88, 166, 255, 0.1)" stroke="#58A6FF" stroke-width="2" class="svg-fade-in" style="animation-delay:0.3s"/>
+            <text x="330" y="210" fill="#3FB950" font-size="11" font-weight="bold" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.7s">Both:</text>
+            <text x="330" y="230" fill="#8B949E" font-size="10" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.8s">Store code</text>
+            <text x="330" y="248" fill="#8B949E" font-size="10" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.9s">Version control</text>
+
+            <!-- GitHub only -->
+            <text x="460" y="70" fill="#58A6FF" font-size="14" font-weight="bold" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.3s">GitHub Adds</text>
+            <text x="440" y="100" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.4s">• Cloud backup</text>
+            <text x="440" y="120" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.5s">• Pull Requests</text>
+            <text x="440" y="140" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.6s">• Issues & Projects</text>
+            <text x="440" y="160" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.7s">• Team collaboration</text>
+            <text x="440" y="180" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.8s">• CI/CD (Actions)</text>
+          </svg>
+        </div>
+
+        <div class="analogy-card">
+          <div class="analogy-title">Another Way to Think About It</div>
+          <blockquote>"Git is like writing in your personal diary. GitHub is like publishing that diary online so your friends can read and contribute to it."</blockquote>
+        </div>
+      </section>
+
+      <!-- Comparison Table -->
+      <section class="animate-on-view">
+        <h2>Quick Comparison</h2>
+        <table class="styled-table">
+          <thead>
+            <tr><th>Feature</th><th>Git</th><th>GitHub</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>What is it?</td><td>Software / tool</td><td>Website / platform</td></tr>
+            <tr><td>Where does it live?</td><td>Your computer</td><td>The internet (cloud)</td></tr>
+            <tr><td>Needs internet?</td><td>No ✅</td><td>Yes</td></tr>
+            <tr><td>Cost</td><td>100% free</td><td>Free tier + paid plans</td></tr>
+            <tr><td>Collaboration?</td><td>Limited (manual)</td><td>Built-in (PRs, reviews)</td></tr>
+            <tr><td>GUI available?</td><td>Command line (+ GUI apps)</td><td>Full web interface</td></tr>
+            <tr><td>Alternatives</td><td>Mercurial, SVN</td><td>GitLab, Bitbucket</td></tr>
+          </tbody>
+        </table>
+
+        <div class="tip-box">
+          <p><strong>Key insight:</strong> You can use Git without GitHub. But you can't use GitHub without Git — GitHub is built on top of Git! Think of GitHub as a <em>supercharged online layer</em> that adds collaboration features around Git's core functionality.</p>
+        </div>
+      </section>
+
+      <!-- Key Takeaways -->
+      <section class="animate-on-view">
+        <h2>Key Takeaways</h2>
+        <div class="success-box">
+          <p><strong>🎉 You now understand the difference between Git and GitHub!</strong></p>
+        </div>
+        <ul>
+          <li><strong>Git</strong> = the version control tool on your computer</li>
+          <li><strong>GitHub</strong> = the cloud platform that hosts your Git repos online</li>
+          <li>Git works <strong>offline</strong>. GitHub requires the <strong>internet</strong>.</li>
+          <li>GitHub adds <strong>collaboration features</strong> like Pull Requests and Issues</li>
+          <li>Alternatives to GitHub include <strong>GitLab</strong> and <strong>Bitbucket</strong></li>
+        </ul>
+      </section>
+
+      <nav class="page-nav">
+        <a href="page-01-what-is-git.html" class="page-nav-link prev"><span class="page-nav-label">← Previous</span><span class="page-nav-title">What Is Git?</span></a>
+        <a href="page-03-installation-setup.html" class="page-nav-link next"><span class="page-nav-label">Next Concept →</span><span class="page-nav-title">Installation & Setup</span></a>
+      </nav>
+      <footer class="page-footer"><p>Chapter 2 of 20 — Git & GitHub Visual Guide</p></footer>
+    </div>
+  </main>
+  <script src="main.js"></script>
+</body>
+</html>

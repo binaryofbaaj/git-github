@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn what a Git repository is — your project folder that Git tracks. Understand local vs remote repos with visual analogies.">
+  <title>What Is a Repository? — Git & GitHub Guide</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <div class="scroll-progress"></div>
+  <nav class="navbar"><div class="navbar-left"><button class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button><a href="index.html" class="navbar-logo"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#58A6FF" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#58A6FF"/><line x1="16" y1="2" x2="16" y2="12" stroke="#58A6FF" stroke-width="2"/><line x1="16" y1="20" x2="16" y2="30" stroke="#58A6FF" stroke-width="2"/></svg>Git Guide</a><span class="navbar-title">Repositories</span></div><div class="navbar-right"><a href="page-03-installation-setup.html" class="nav-btn">← Prev</a><a href="page-05-staging-area.html" class="nav-btn primary">Next →</a></div></nav>
+
+  <div class="sidebar-overlay"></div>
+  <aside class="sidebar">
+    <div class="sidebar-section-title">Getting Started</div>
+    <a href="index.html" class="sidebar-link"><span class="check"></span><span class="link-text">Welcome</span></a>
+    <a href="page-01-what-is-git.html" class="sidebar-link"><span class="check"></span><span class="link-text">1. What Is Git?</span></a>
+    <a href="page-02-git-vs-github.html" class="sidebar-link"><span class="check"></span><span class="link-text">2. Git vs GitHub</span></a>
+    <a href="page-03-installation-setup.html" class="sidebar-link"><span class="check"></span><span class="link-text">3. Installation & Setup</span></a>
+    <div class="sidebar-section-title">Core Concepts</div>
+    <a href="page-04-repository.html" class="sidebar-link active"><span class="check">✓</span><span class="link-text">4. Repositories</span></a>
+    <a href="page-05-staging-area.html" class="sidebar-link"><span class="check"></span><span class="link-text">5. The Staging Area</span></a>
+    <a href="page-06-commits.html" class="sidebar-link"><span class="check"></span><span class="link-text">6. Making Commits</span></a>
+    <a href="page-07-branches.html" class="sidebar-link"><span class="check"></span><span class="link-text">7. Branches</span></a>
+    <a href="page-08-merging.html" class="sidebar-link"><span class="check"></span><span class="link-text">8. Merging</span></a>
+    <div class="sidebar-section-title">Collaboration</div>
+    <a href="page-09-remote-repos.html" class="sidebar-link"><span class="check"></span><span class="link-text">9. Remote Repos</span></a>
+    <a href="page-10-clone-fork.html" class="sidebar-link"><span class="check"></span><span class="link-text">10. Clone & Fork</span></a>
+    <a href="page-11-pull-requests.html" class="sidebar-link"><span class="check"></span><span class="link-text">11. Pull Requests</span></a>
+    <div class="sidebar-section-title">Intermediate</div>
+    <a href="page-12-git-log-history.html" class="sidebar-link"><span class="check"></span><span class="link-text">12. History & Log</span></a>
+    <a href="page-13-undoing-changes.html" class="sidebar-link"><span class="check"></span><span class="link-text">13. Undoing Changes</span></a>
+    <a href="page-14-gitignore.html" class="sidebar-link"><span class="check"></span><span class="link-text">14. .gitignore</span></a>
+    <a href="page-15-tags-releases.html" class="sidebar-link"><span class="check"></span><span class="link-text">15. Tags & Releases</span></a>
+    <div class="sidebar-section-title">Advanced</div>
+    <a href="page-16-collaboration-workflow.html" class="sidebar-link"><span class="check"></span><span class="link-text">16. Team Workflows</span></a>
+    <a href="page-17-github-features.html" class="sidebar-link"><span class="check"></span><span class="link-text">17. GitHub Features</span></a>
+    <a href="page-18-ssh-authentication.html" class="sidebar-link"><span class="check"></span><span class="link-text">18. SSH & Auth</span></a>
+    <a href="page-19-best-practices.html" class="sidebar-link"><span class="check"></span><span class="link-text">19. Best Practices</span></a>
+    <a href="page-20-cheatsheet.html" class="sidebar-link"><span class="check"></span><span class="link-text">20. Cheat Sheet</span></a>
+  </aside>
+
+  <main class="main-wrapper" id="main-content">
+    <div class="page-content">
+      <nav class="breadcrumbs"><a href="index.html">Home</a><span class="separator">›</span><a href="page-04-repository.html">Core Concepts</a><span class="separator">›</span><span class="current">Repositories</span></nav>
+
+      <header class="page-header">
+        <span class="page-number">Chapter 4 of 20</span>
+        <div class="reading-time">📖 <span class="reading-time-value"></span></div>
+        <h1>What Is a Repository?</h1>
+        <p class="page-subtitle">A repository (or "repo") is simply a folder that Git is watching and tracking. Let's explore what that really means.</p>
+      </header>
+
+      <section class="animate-on-view">
+        <h2>The Simple Definition</h2>
+        <p>A <span class="glossary-term" tabindex="0">repository<span class="glossary-tooltip"><span class="glossary-tooltip-title">Repository (Repo)</span>A project folder that Git is tracking. It contains your files plus a hidden .git folder that stores all of Git's data about changes and history.</span></span> is just a <strong>folder</strong> — but one that Git is actively watching. Every change you make to files inside this folder gets noticed by Git.</p>
+
+        <div class="analogy-card">
+          <div class="analogy-title">Real-World Analogy</div>
+          <p>Think of a regular folder as an <strong>ordinary room</strong>. A Git repository is a room with <strong>security cameras installed</strong>. The room itself doesn't change — but now every movement inside it is being recorded. You can review the footage (history) anytime.</p>
+        </div>
+      </section>
+
+      <!-- Git Init Animation -->
+      <section class="animate-on-view">
+        <h2>Creating a Repository with <code>git init</code></h2>
+
+        <div class="diagram-container" data-animate>
+          <svg viewBox="0 0 700 250" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+            <title>A folder waking up when git init is run</title>
+            <desc>An ordinary folder transforms into a Git repository with a .git brain</desc>
+            <!-- Sleeping folder -->
+            <rect x="40" y="40" width="180" height="160" rx="12" fill="#1C2129" stroke="#30363D" stroke-width="2" class="svg-fade-in"/>
+            <text x="130" y="90" text-anchor="middle" fill="#8B949E" font-size="40" class="svg-fade-in">📁</text>
+            <text x="130" y="125" text-anchor="middle" fill="#8B949E" font-size="13" font-family="JetBrains Mono, monospace" class="svg-fade-in">my-project/</text>
+            <text x="130" y="150" text-anchor="middle" fill="#6E7681" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in">💤 Just a folder</text>
+            <text x="130" y="175" text-anchor="middle" fill="#6E7681" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in">Git doesn't know it exists</text>
+
+            <!-- Arrow -->
+            <text x="300" y="120" text-anchor="middle" fill="#58A6FF" font-size="13" font-weight="bold" font-family="JetBrains Mono, monospace" class="svg-fade-in" style="animation-delay:0.4s">git init</text>
+            <line x1="270" y1="130" x2="370" y2="130" stroke="#58A6FF" stroke-width="2" class="svg-draw" stroke-dasharray="100" stroke-dashoffset="100" style="animation-delay:0.5s"/>
+            <polygon points="365,125 375,130 365,135" fill="#58A6FF" class="svg-fade-in" style="animation-delay:0.8s"/>
+
+            <!-- Awakened folder -->
+            <rect x="400" y="40" width="260" height="160" rx="12" fill="#1C2129" stroke="#3FB950" stroke-width="2" class="svg-fade-in" style="animation-delay:0.9s"/>
+            <text x="530" y="80" text-anchor="middle" fill="#3FB950" font-size="40" class="svg-fade-in" style="animation-delay:1s">📁</text>
+            <text x="530" y="110" text-anchor="middle" fill="#3FB950" font-size="13" font-weight="bold" font-family="JetBrains Mono, monospace" class="svg-fade-in" style="animation-delay:1s">my-project/</text>
+            <text x="530" y="135" text-anchor="middle" fill="#BC8CFF" font-size="12" font-family="JetBrains Mono, monospace" class="svg-fade-in" style="animation-delay:1.1s">📁 .git/ ← Git's brain!</text>
+            <text x="530" y="160" text-anchor="middle" fill="#3FB950" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:1.2s">🧠 Now a Git repository!</text>
+            <text x="530" y="180" text-anchor="middle" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:1.3s">Tracking all changes</text>
+          </svg>
+        </div>
+      </section>
+
+      <!-- Local vs Remote -->
+      <section class="animate-on-view">
+        <h2>Local vs Remote Repositories</h2>
+        <p>There are two types of repos you'll work with:</p>
+
+        <div class="comparison-grid">
+          <div class="comparison-card" style="border-top: 3px solid var(--accent-orange);">
+            <h4 style="color: var(--accent-orange); margin-top: 0;">📁 Local Repository</h4>
+            <p>Lives on <strong>your computer</strong>. This is where you do your actual work — writing code, creating files, making changes.</p>
+            <p style="margin-bottom: 0;"><em>🏠 Analogy: Your desk drawer</em></p>
+          </div>
+          <div class="comparison-card" style="border-top: 3px solid var(--accent-blue);">
+            <h4 style="color: var(--accent-blue); margin-top: 0;">☁️ Remote Repository</h4>
+            <p>Lives on a <strong>server</strong> (like GitHub). It's an online copy of your project that others can access.</p>
+            <p style="margin-bottom: 0;"><em>🗄️ Analogy: A shared filing cabinet in the office</em></p>
+          </div>
+        </div>
+
+        <div class="diagram-container" data-animate>
+          <svg viewBox="0 0 700 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+            <title>Local and remote repository connected</title>
+            <!-- Local -->
+            <rect x="40" y="30" width="200" height="120" rx="10" fill="#1C2129" stroke="#D29922" stroke-width="2" class="svg-fade-in"/>
+            <text x="140" y="70" text-anchor="middle" fill="#D29922" font-size="28" class="svg-fade-in">🖥️</text>
+            <text x="140" y="100" text-anchor="middle" fill="#D29922" font-size="13" font-weight="bold" font-family="Inter, sans-serif" class="svg-fade-in">Local Repo</text>
+            <text x="140" y="120" text-anchor="middle" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in">Your computer</text>
+
+            <!-- Sync arrows -->
+            <line x1="260" y1="75" x2="420" y2="75" stroke="#3FB950" stroke-width="2" stroke-dasharray="6,4" class="svg-draw" stroke-dashoffset="200" style="animation-delay:0.5s"/>
+            <polygon points="415,70 425,75 415,80" fill="#3FB950" class="svg-fade-in" style="animation-delay:0.8s"/>
+            <text x="340" y="67" text-anchor="middle" fill="#3FB950" font-size="10" font-family="JetBrains Mono, monospace" class="svg-fade-in" style="animation-delay:0.9s">push</text>
+
+            <line x1="420" y1="105" x2="260" y2="105" stroke="#58A6FF" stroke-width="2" stroke-dasharray="6,4" class="svg-draw" stroke-dashoffset="200" style="animation-delay:0.7s"/>
+            <polygon points="265,100 255,105 265,110" fill="#58A6FF" class="svg-fade-in" style="animation-delay:1s"/>
+            <text x="340" y="125" text-anchor="middle" fill="#58A6FF" font-size="10" font-family="JetBrains Mono, monospace" class="svg-fade-in" style="animation-delay:1.1s">pull</text>
+
+            <!-- Remote -->
+            <rect x="440" y="30" width="220" height="120" rx="10" fill="#1C2129" stroke="#58A6FF" stroke-width="2" class="svg-fade-in" style="animation-delay:0.3s"/>
+            <text x="550" y="70" text-anchor="middle" fill="#58A6FF" font-size="28" class="svg-fade-in" style="animation-delay:0.3s">☁️</text>
+            <text x="550" y="100" text-anchor="middle" fill="#58A6FF" font-size="13" font-weight="bold" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.3s">Remote Repo</text>
+            <text x="550" y="120" text-anchor="middle" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.3s">GitHub</text>
+          </svg>
+        </div>
+      </section>
+
+      <!-- Inside .git -->
+      <section class="animate-on-view">
+        <h2>Inside the <code>.git</code> Folder</h2>
+        <p>When you run <code>git init</code>, Git creates a hidden folder called <code>.git</code> inside your project. This is Git's brain — it stores everything Git needs to track your project. Let's peek inside:</p>
+
+        <div class="file-tree">
+          <div class="file-tree-item git">📁 .git/</div>
+          <div class="file-tree-item" style="padding-left: 24px; color: var(--accent-blue);">📁 objects/ <span style="color: var(--text-muted);">— Stores all file versions and commits</span></div>
+          <div class="file-tree-item" style="padding-left: 24px; color: var(--accent-blue);">📁 refs/ <span style="color: var(--text-muted);">— Stores branch and tag pointers</span></div>
+          <div class="file-tree-item" style="padding-left: 24px; color: var(--accent-green);">📄 HEAD <span style="color: var(--text-muted);">— Points to your current branch</span></div>
+          <div class="file-tree-item" style="padding-left: 24px; color: var(--accent-green);">📄 config <span style="color: var(--text-muted);">— Repo-specific settings</span></div>
+          <div class="file-tree-item" style="padding-left: 24px; color: var(--accent-green);">📄 index <span style="color: var(--text-muted);">— The staging area</span></div>
+        </div>
+
+        <div class="warning-box">
+          <p>Never manually edit or delete the <code>.git</code> folder! If you do, Git will lose all its memory of your project's history. It's like erasing the security camera footage.</p>
+        </div>
+      </section>
+
+      <!-- Interactive Terminal -->
+      <section class="animate-on-view">
+        <h2>Try It: Create Your First Repo</h2>
+
+        <div class="terminal-sim" data-commands='{
+          "mkdir my-first-project": "",
+          "cd my-first-project": "(changed directory to my-first-project)",
+          "git init": "Initialized empty Git repository in /Users/you/my-first-project/.git/",
+          "ls -la": "total 0\ndrwxr-xr-x   3 you  staff    96 Jun 22 10:00 .\ndrwxr-xr-x   5 you  staff   160 Jun 22 09:55 ..\ndrwxr-xr-x   9 you  staff   288 Jun 22 10:00 .git",
+          "git status": "On branch main\n\nNo commits yet\n\nnothing to commit (create/copy files and use \"git add\" to track)"
+        }'>
+          <div class="terminal-sim-header">
+            <div class="command-block-dots"><span></span><span></span><span></span></div>
+            <span class="terminal-sim-title">Terminal — Create a Repo</span>
+          </div>
+          <div class="terminal-sim-body">
+            <div class="terminal-sim-input-line">
+              <span class="terminal-sim-prompt">$ </span>
+              <input type="text" class="terminal-sim-input" placeholder="Type a command..." aria-label="Terminal input">
+            </div>
+          </div>
+          <div class="terminal-sim-buttons">
+            <button class="terminal-sim-btn" data-cmd="mkdir my-first-project">mkdir my-first-project</button>
+            <button class="terminal-sim-btn" data-cmd="cd my-first-project">cd my-first-project</button>
+            <button class="terminal-sim-btn" data-cmd="git init">git init</button>
+            <button class="terminal-sim-btn" data-cmd="ls -la">ls -la</button>
+            <button class="terminal-sim-btn" data-cmd="git status">git status</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="animate-on-view">
+        <h2>Key Takeaways</h2>
+        <div class="success-box"><p><strong>🎉 You now understand repositories!</strong></p></div>
+        <ul>
+          <li><strong>A repo</strong> is a folder Git is tracking</li>
+          <li><strong><code>git init</code></strong> turns any folder into a repo by creating a <code>.git</code> folder</li>
+          <li><strong>Local repos</strong> live on your computer, <strong>remote repos</strong> live online (GitHub)</li>
+          <li><strong>The <code>.git</code> folder</strong> is Git's brain — never delete it!</li>
+        </ul>
+      </section>
+
+      <nav class="page-nav">
+        <a href="page-03-installation-setup.html" class="page-nav-link prev"><span class="page-nav-label">← Previous</span><span class="page-nav-title">Installation & Setup</span></a>
+        <a href="page-05-staging-area.html" class="page-nav-link next"><span class="page-nav-label">Next Concept →</span><span class="page-nav-title">The Staging Area</span></a>
+      </nav>
+      <footer class="page-footer"><p>Chapter 4 of 20 — Git & GitHub Visual Guide</p></footer>
+    </div>
+  </main>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How to install Git on Windows, Mac, and Linux. Set up your identity and learn what a terminal is — explained for absolute beginners.">
+  <title>Installing Git & Setting Up — Git & GitHub Guide</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <div class="scroll-progress"></div>
+  <nav class="navbar"><div class="navbar-left"><button class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button><a href="index.html" class="navbar-logo"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#58A6FF" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#58A6FF"/><line x1="16" y1="2" x2="16" y2="12" stroke="#58A6FF" stroke-width="2"/><line x1="16" y1="20" x2="16" y2="30" stroke="#58A6FF" stroke-width="2"/></svg>Git Guide</a><span class="navbar-title">Installation & Setup</span></div><div class="navbar-right"><a href="page-02-git-vs-github.html" class="nav-btn">← Prev</a><a href="page-04-repository.html" class="nav-btn primary">Next →</a></div></nav>
+
+  <div class="sidebar-overlay"></div>
+  <aside class="sidebar">
+    <div class="sidebar-section-title">Getting Started</div>
+    <a href="index.html" class="sidebar-link"><span class="check"></span><span class="link-text">Welcome</span></a>
+    <a href="page-01-what-is-git.html" class="sidebar-link"><span class="check"></span><span class="link-text">1. What Is Git?</span></a>
+    <a href="page-02-git-vs-github.html" class="sidebar-link"><span class="check"></span><span class="link-text">2. Git vs GitHub</span></a>
+    <a href="page-03-installation-setup.html" class="sidebar-link active"><span class="check">✓</span><span class="link-text">3. Installation & Setup</span></a>
+    <div class="sidebar-section-title">Core Concepts</div>
+    <a href="page-04-repository.html" class="sidebar-link"><span class="check"></span><span class="link-text">4. Repositories</span></a>
+    <a href="page-05-staging-area.html" class="sidebar-link"><span class="check"></span><span class="link-text">5. The Staging Area</span></a>
+    <a href="page-06-commits.html" class="sidebar-link"><span class="check"></span><span class="link-text">6. Making Commits</span></a>
+    <a href="page-07-branches.html" class="sidebar-link"><span class="check"></span><span class="link-text">7. Branches</span></a>
+    <a href="page-08-merging.html" class="sidebar-link"><span class="check"></span><span class="link-text">8. Merging</span></a>
+    <div class="sidebar-section-title">Collaboration</div>
+    <a href="page-09-remote-repos.html" class="sidebar-link"><span class="check"></span><span class="link-text">9. Remote Repos</span></a>
+    <a href="page-10-clone-fork.html" class="sidebar-link"><span class="check"></span><span class="link-text">10. Clone & Fork</span></a>
+    <a href="page-11-pull-requests.html" class="sidebar-link"><span class="check"></span><span class="link-text">11. Pull Requests</span></a>
+    <div class="sidebar-section-title">Intermediate</div>
+    <a href="page-12-git-log-history.html" class="sidebar-link"><span class="check"></span><span class="link-text">12. History & Log</span></a>
+    <a href="page-13-undoing-changes.html" class="sidebar-link"><span class="check"></span><span class="link-text">13. Undoing Changes</span></a>
+    <a href="page-14-gitignore.html" class="sidebar-link"><span class="check"></span><span class="link-text">14. .gitignore</span></a>
+    <a href="page-15-tags-releases.html" class="sidebar-link"><span class="check"></span><span class="link-text">15. Tags & Releases</span></a>
+    <div class="sidebar-section-title">Advanced</div>
+    <a href="page-16-collaboration-workflow.html" class="sidebar-link"><span class="check"></span><span class="link-text">16. Team Workflows</span></a>
+    <a href="page-17-github-features.html" class="sidebar-link"><span class="check"></span><span class="link-text">17. GitHub Features</span></a>
+    <a href="page-18-ssh-authentication.html" class="sidebar-link"><span class="check"></span><span class="link-text">18. SSH & Auth</span></a>
+    <a href="page-19-best-practices.html" class="sidebar-link"><span class="check"></span><span class="link-text">19. Best Practices</span></a>
+    <a href="page-20-cheatsheet.html" class="sidebar-link"><span class="check"></span><span class="link-text">20. Cheat Sheet</span></a>
+  </aside>
+
+  <main class="main-wrapper" id="main-content">
+    <div class="page-content">
+      <nav class="breadcrumbs"><a href="index.html">Home</a><span class="separator">›</span><span class="current">Installation & Setup</span></nav>
+
+      <header class="page-header">
+        <span class="page-number">Chapter 3 of 20</span>
+        <div class="reading-time">📖 <span class="reading-time-value"></span></div>
+        <h1>Installing Git & Setting Up</h1>
+        <p class="page-subtitle">Let's get Git on your computer and configure it. Don't worry — the terminal is less scary than it looks.</p>
+      </header>
+
+      <!-- What is a Terminal -->
+      <section class="animate-on-view">
+        <h2>First: What's a "Terminal"?</h2>
+        <p>Before we install Git, let's demystify the thing you'll be typing Git commands into — the <span class="glossary-term" tabindex="0">terminal<span class="glossary-tooltip"><span class="glossary-tooltip-title">Terminal</span>A text-based interface to give your computer instructions by typing commands instead of clicking buttons. Also called "command prompt" (Windows) or "shell".</span></span>.</p>
+
+        <div class="analogy-card">
+          <div class="analogy-title">Real-World Analogy</div>
+          <p>A terminal is just <strong>a text-based way to give your computer instructions</strong>. Instead of clicking icons and buttons, you type short commands. It's like texting your computer instead of having a face-to-face conversation. Same result, different method.</p>
+        </div>
+
+        <div class="diagram-container" data-animate>
+          <svg viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+            <title>Anatomy of a terminal window</title>
+            <desc>A terminal window with labeled parts: title bar, prompt, cursor, and command area</desc>
+            <!-- Terminal window -->
+            <rect x="50" y="20" width="500" height="160" rx="10" fill="#0D1117" stroke="#30363D" stroke-width="2" class="svg-fade-in"/>
+            <!-- Title bar -->
+            <rect x="50" y="20" width="500" height="30" rx="10" fill="#161B22" class="svg-fade-in"/>
+            <rect x="50" y="40" width="500" height="10" fill="#161B22" class="svg-fade-in"/>
+            <circle cx="72" cy="35" r="6" fill="#F85149" class="svg-fade-in"/>
+            <circle cx="92" cy="35" r="6" fill="#D29922" class="svg-fade-in"/>
+            <circle cx="112" cy="35" r="6" fill="#3FB950" class="svg-fade-in"/>
+            <text x="300" y="39" text-anchor="middle" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in">Terminal — bash</text>
+
+            <!-- Prompt line -->
+            <text x="70" y="80" fill="#3FB950" font-size="13" font-family="JetBrains Mono, monospace" class="svg-fade-in" style="animation-delay:0.3s">yourname@computer</text>
+            <text x="240" y="80" fill="#58A6FF" font-size="13" font-family="JetBrains Mono, monospace" class="svg-fade-in" style="animation-delay:0.3s">~/projects</text>
+            <text x="335" y="80" fill="#E6EDF3" font-size="13" font-family="JetBrains Mono, monospace" class="svg-fade-in" style="animation-delay:0.3s">$ git status</text>
+
+            <!-- Labels -->
+            <line x1="150" y1="86" x2="150" y2="110" stroke="#D29922" stroke-width="1" class="svg-fade-in" style="animation-delay:0.5s"/>
+            <text x="150" y="125" text-anchor="middle" fill="#D29922" font-size="10" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.5s">↑ Your username</text>
+
+            <line x1="280" y1="86" x2="280" y2="130" stroke="#58A6FF" stroke-width="1" class="svg-fade-in" style="animation-delay:0.6s"/>
+            <text x="280" y="145" text-anchor="middle" fill="#58A6FF" font-size="10" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.6s">↑ Current folder</text>
+
+            <line x1="345" y1="86" x2="345" y2="150" stroke="#BC8CFF" stroke-width="1" class="svg-fade-in" style="animation-delay:0.7s"/>
+            <text x="345" y="165" text-anchor="middle" fill="#BC8CFF" font-size="10" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.7s">↑ $ = ready for input</text>
+
+            <line x1="420" y1="86" x2="420" y2="110" stroke="#3FB950" stroke-width="1" class="svg-fade-in" style="animation-delay:0.8s"/>
+            <text x="445" y="125" text-anchor="middle" fill="#3FB950" font-size="10" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.8s">↑ Your command!</text>
+          </svg>
+        </div>
+
+        <div class="tip-box">
+          <p>Don't be intimidated by the terminal! You only need to learn about 10-15 commands total, and we'll teach them one at a time. Think of it like learning a few magic words — each one does something useful.</p>
+        </div>
+      </section>
+
+      <!-- Install Git -->
+      <section class="animate-on-view">
+        <h2>Installing Git</h2>
+        <p>Choose your operating system below to see the right installation steps:</p>
+
+        <div>
+          <div class="os-tabs">
+            <button class="os-tab active" data-os="mac">🍎 Mac</button>
+            <button class="os-tab" data-os="windows">🪟 Windows</button>
+            <button class="os-tab" data-os="linux">🐧 Linux</button>
+          </div>
+
+          <div class="os-content active" data-os="mac">
+            <h3>Option 1: Using Homebrew (recommended)</h3>
+            <p>If you have Homebrew installed, just run:</p>
+            <div class="command-block">
+              <div class="command-block-header"><div class="command-block-dots"><span></span><span></span><span></span></div><span class="command-block-label">Terminal</span><button class="copy-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy</button></div>
+              <pre><span class="cmd-command">brew</span> <span class="cmd-flag">install</span> git</pre>
+            </div>
+
+            <h3>Option 2: Xcode Command Line Tools</h3>
+            <p>Open Terminal and type:</p>
+            <div class="command-block">
+              <div class="command-block-header"><div class="command-block-dots"><span></span><span></span><span></span></div><span class="command-block-label">Terminal</span><button class="copy-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy</button></div>
+              <pre><span class="cmd-command">xcode-select</span> <span class="cmd-flag">--install</span></pre>
+            </div>
+            <p>A popup will appear asking to install developer tools. Click "Install" and wait.</p>
+          </div>
+
+          <div class="os-content" data-os="windows">
+            <h3>Download Git for Windows</h3>
+            <ol>
+              <li>Go to <strong>git-scm.com/download/win</strong></li>
+              <li>Download the installer (.exe file)</li>
+              <li>Run the installer — the default settings are fine for beginners</li>
+              <li>When asked about a text editor, you can leave the default or choose VS Code</li>
+              <li>Click "Finish" when done</li>
+            </ol>
+            <p>After installing, open <strong>Git Bash</strong> (a terminal that comes with Git for Windows) from the Start menu.</p>
+
+            <div class="tip-box">
+              <p>Windows users: use <strong>Git Bash</strong> (installed with Git) instead of Command Prompt. Git Bash understands the same commands as Mac/Linux terminals.</p>
+            </div>
+          </div>
+
+          <div class="os-content" data-os="linux">
+            <h3>Debian / Ubuntu</h3>
+            <div class="command-block">
+              <div class="command-block-header"><div class="command-block-dots"><span></span><span></span><span></span></div><span class="command-block-label">Terminal</span><button class="copy-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy</button></div>
+              <pre><span class="cmd-command">sudo</span> <span class="cmd-command">apt</span> <span class="cmd-flag">update</span>
+<span class="cmd-command">sudo</span> <span class="cmd-command">apt</span> <span class="cmd-flag">install</span> git</pre>
+            </div>
+
+            <h3>Fedora</h3>
+            <div class="command-block">
+              <div class="command-block-header"><div class="command-block-dots"><span></span><span></span><span></span></div><span class="command-block-label">Terminal</span><button class="copy-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy</button></div>
+              <pre><span class="cmd-command">sudo</span> <span class="cmd-command">dnf</span> <span class="cmd-flag">install</span> git</pre>
+            </div>
+          </div>
+        </div>
+
+        <h3>Verify the Installation</h3>
+        <p>No matter what OS you're on, open a terminal and run:</p>
+        <div class="command-block">
+          <div class="command-block-header"><div class="command-block-dots"><span></span><span></span><span></span></div><span class="command-block-label">Terminal</span><button class="copy-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy</button></div>
+          <pre><span class="cmd-command">git</span> <span class="cmd-flag">--version</span></pre>
+        </div>
+        <p>If you see something like <code>git version 2.42.0</code>, you're good to go! 🎉</p>
+      </section>
+
+      <!-- Configuring Git -->
+      <section class="animate-on-view">
+        <h2>Setting Up Your Identity</h2>
+        <p>Before you start using Git, you need to tell it who you are. Every <span class="glossary-term" tabindex="0">commit<span class="glossary-tooltip"><span class="glossary-tooltip-title">Commit</span>A saved snapshot of your project. Each commit records who made the change, when, and a message describing what changed.</span></span> you make will be stamped with your name and email.</p>
+
+        <div class="analogy-card">
+          <div class="analogy-title">Real-World Analogy</div>
+          <p>Think of <code>git config</code> as filling out your contact card. Git stores it in its address book so it knows who to credit for each change.</p>
+        </div>
+
+        <div class="terminal-sim" data-commands='{
+          "git config --global user.name \"Your Name\"": "Config saved. Git will use \"Your Name\" for all your commits.",
+          "git config --global user.email \"you@example.com\"": "Config saved. Git will use \"you@example.com\" for all your commits.",
+          "git config --list": "user.name=Your Name\nuser.email=you@example.com\ncore.editor=vim\ninit.defaultBranch=main\ncolor.ui=auto",
+          "git config user.name": "Your Name",
+          "git config user.email": "you@example.com"
+        }'>
+          <div class="terminal-sim-header">
+            <div class="command-block-dots"><span></span><span></span><span></span></div>
+            <span class="terminal-sim-title">Terminal — Setting Up Git</span>
+          </div>
+          <div class="terminal-sim-body">
+            <div class="terminal-sim-input-line">
+              <span class="terminal-sim-prompt">$ </span>
+              <input type="text" class="terminal-sim-input" placeholder="Type a command..." aria-label="Terminal input">
+            </div>
+          </div>
+          <div class="terminal-sim-buttons">
+            <button class="terminal-sim-btn" data-cmd="git config --global user.name &quot;Your Name&quot;">Set name</button>
+            <button class="terminal-sim-btn" data-cmd="git config --global user.email &quot;you@example.com&quot;">Set email</button>
+            <button class="terminal-sim-btn" data-cmd="git config --list">View config</button>
+          </div>
+        </div>
+
+        <div class="warning-box">
+          <p>The <code>--global</code> flag means this applies to ALL your Git projects. Without it, the setting would only apply to the current project.</p>
+        </div>
+      </section>
+
+      <!-- Key Takeaways -->
+      <section class="animate-on-view">
+        <h2>Key Takeaways</h2>
+        <div class="success-box">
+          <p><strong>🎉 You've installed Git and configured your identity!</strong></p>
+        </div>
+        <ul>
+          <li><strong>The terminal</strong> is just a text-based way to talk to your computer</li>
+          <li><strong>Git installs easily</strong> on Mac, Windows, and Linux</li>
+          <li><strong><code>git config</code></strong> stores your name and email for commits</li>
+          <li><strong><code>git --version</code></strong> confirms Git is installed correctly</li>
+        </ul>
+      </section>
+
+      <nav class="page-nav">
+        <a href="page-02-git-vs-github.html" class="page-nav-link prev"><span class="page-nav-label">← Previous</span><span class="page-nav-title">Git vs GitHub</span></a>
+        <a href="page-04-repository.html" class="page-nav-link next"><span class="page-nav-label">Next Concept →</span><span class="page-nav-title">Repositories</span></a>
+      </nav>
+      <footer class="page-footer"><p>Chapter 3 of 20 — Git & GitHub Visual Guide</p></footer>
+    </div>
+  </main>
+  <script src="main.js"></script>
+</body>
+</html>

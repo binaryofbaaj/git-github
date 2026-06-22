@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn team Git workflows — GitFlow, GitHub Flow, and trunk-based development. Which one is right for your team?">
+  <title>Team Workflows — Git & GitHub Guide</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a><div class="scroll-progress"></div>
+  <nav class="navbar"><div class="navbar-left"><button class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button><a href="index.html" class="navbar-logo"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#58A6FF" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#58A6FF"/><line x1="16" y1="2" x2="16" y2="12" stroke="#58A6FF" stroke-width="2"/><line x1="16" y1="20" x2="16" y2="30" stroke="#58A6FF" stroke-width="2"/></svg>Git Guide</a><span class="navbar-title">Team Workflows</span></div><div class="navbar-right"><a href="page-15-tags-releases.html" class="nav-btn">← Prev</a><a href="page-17-github-features.html" class="nav-btn primary">Next →</a></div></nav>
+  <div class="sidebar-overlay"></div>
+  <aside class="sidebar"><div class="sidebar-section-title">Getting Started</div><a href="index.html" class="sidebar-link"><span class="check"></span><span class="link-text">Welcome</span></a><a href="page-01-what-is-git.html" class="sidebar-link"><span class="check"></span><span class="link-text">1. What Is Git?</span></a><a href="page-02-git-vs-github.html" class="sidebar-link"><span class="check"></span><span class="link-text">2. Git vs GitHub</span></a><a href="page-03-installation-setup.html" class="sidebar-link"><span class="check"></span><span class="link-text">3. Installation & Setup</span></a><div class="sidebar-section-title">Core Concepts</div><a href="page-04-repository.html" class="sidebar-link"><span class="check"></span><span class="link-text">4. Repositories</span></a><a href="page-05-staging-area.html" class="sidebar-link"><span class="check"></span><span class="link-text">5. The Staging Area</span></a><a href="page-06-commits.html" class="sidebar-link"><span class="check"></span><span class="link-text">6. Making Commits</span></a><a href="page-07-branches.html" class="sidebar-link"><span class="check"></span><span class="link-text">7. Branches</span></a><a href="page-08-merging.html" class="sidebar-link"><span class="check"></span><span class="link-text">8. Merging</span></a><div class="sidebar-section-title">Collaboration</div><a href="page-09-remote-repos.html" class="sidebar-link"><span class="check"></span><span class="link-text">9. Remote Repos</span></a><a href="page-10-clone-fork.html" class="sidebar-link"><span class="check"></span><span class="link-text">10. Clone & Fork</span></a><a href="page-11-pull-requests.html" class="sidebar-link"><span class="check"></span><span class="link-text">11. Pull Requests</span></a><div class="sidebar-section-title">Intermediate</div><a href="page-12-git-log-history.html" class="sidebar-link"><span class="check"></span><span class="link-text">12. History & Log</span></a><a href="page-13-undoing-changes.html" class="sidebar-link"><span class="check"></span><span class="link-text">13. Undoing Changes</span></a><a href="page-14-gitignore.html" class="sidebar-link"><span class="check"></span><span class="link-text">14. .gitignore</span></a><a href="page-15-tags-releases.html" class="sidebar-link"><span class="check"></span><span class="link-text">15. Tags & Releases</span></a><div class="sidebar-section-title">Advanced</div><a href="page-16-collaboration-workflow.html" class="sidebar-link active"><span class="check">✓</span><span class="link-text">16. Team Workflows</span></a><a href="page-17-github-features.html" class="sidebar-link"><span class="check"></span><span class="link-text">17. GitHub Features</span></a><a href="page-18-ssh-authentication.html" class="sidebar-link"><span class="check"></span><span class="link-text">18. SSH & Auth</span></a><a href="page-19-best-practices.html" class="sidebar-link"><span class="check"></span><span class="link-text">19. Best Practices</span></a><a href="page-20-cheatsheet.html" class="sidebar-link"><span class="check"></span><span class="link-text">20. Cheat Sheet</span></a></aside>
+
+  <main class="main-wrapper" id="main-content">
+    <div class="page-content">
+      <nav class="breadcrumbs"><a href="index.html">Home</a><span class="separator">›</span><span class="current">Team Workflows</span></nav>
+      <header class="page-header"><span class="page-number">Chapter 16 of 20</span><div class="reading-time">📖 <span class="reading-time-value"></span></div><h1>Team Workflows</h1><p class="page-subtitle">How real teams organize their Git usage — from simple to complex. Pick the right workflow for your team.</p></header>
+
+      <section class="animate-on-view">
+        <h2>GitHub Flow (Recommended for Most Teams)</h2>
+        <p>The simplest workflow — great for teams that deploy frequently.</p>
+        <div class="step-list">
+          <div class="step-item"><h3>Create a branch from <code>main</code></h3><p>Name it descriptively: <code>feature/add-search</code>, <code>fix/login-bug</code></p></div>
+          <div class="step-item"><h3>Make commits on your branch</h3><p>Write code, commit often with clear messages</p></div>
+          <div class="step-item"><h3>Push your branch to GitHub</h3><p><code>git push origin feature/add-search</code></p></div>
+          <div class="step-item"><h3>Open a Pull Request</h3><p>Describe what you changed and why</p></div>
+          <div class="step-item"><h3>Team reviews and discusses</h3><p>Teammates leave comments, suggest changes</p></div>
+          <div class="step-item"><h3>Merge to main and deploy!</h3><p>Once approved, merge and ship it 🚀</p></div>
+        </div>
+      </section>
+
+      <section class="animate-on-view">
+        <h2>GitFlow (For Complex Release Cycles)</h2>
+        <p>A more structured workflow with dedicated branches for releases and hotfixes.</p>
+        <table class="styled-table">
+          <thead><tr><th>Branch</th><th>Purpose</th><th>Merges Into</th></tr></thead>
+          <tbody>
+            <tr><td><code style="color: var(--accent-green);">main</code></td><td>Production-ready code</td><td>—</td></tr>
+            <tr><td><code style="color: var(--accent-blue);">develop</code></td><td>Integration branch for features</td><td>main</td></tr>
+            <tr><td><code style="color: var(--accent-purple);">feature/*</code></td><td>New features</td><td>develop</td></tr>
+            <tr><td><code style="color: var(--accent-orange);">release/*</code></td><td>Preparing a release</td><td>main + develop</td></tr>
+            <tr><td><code style="color: var(--accent-red);">hotfix/*</code></td><td>Emergency production fixes</td><td>main + develop</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="animate-on-view">
+        <h2>Which Should You Use?</h2>
+        <div class="comparison-grid">
+          <div class="comparison-card good"><h4 style="color: var(--accent-green); margin-top:0;">GitHub Flow</h4><p>Small teams, fast deployments, web apps. Simple and effective. <strong>Start here.</strong></p></div>
+          <div class="comparison-card" style="border-top: 3px solid var(--accent-purple);"><h4 style="color: var(--accent-purple); margin-top:0;">GitFlow</h4><p>Large teams, scheduled releases, mobile apps. More complex but very organized.</p></div>
+        </div>
+        <div class="success-box"><p><strong>🎉 You now understand team workflows!</strong> GitHub Flow is perfect for getting started. Graduate to GitFlow when your team needs it.</p></div>
+      </section>
+
+      <nav class="page-nav"><a href="page-15-tags-releases.html" class="page-nav-link prev"><span class="page-nav-label">← Previous</span><span class="page-nav-title">Tags & Releases</span></a><a href="page-17-github-features.html" class="page-nav-link next"><span class="page-nav-label">Next Concept →</span><span class="page-nav-title">GitHub Features</span></a></nav>
+      <footer class="page-footer"><p>Chapter 16 of 20 — Git & GitHub Visual Guide</p></footer>
+    </div>
+  </main>
+  <script src="main.js"></script>
+</body>
+</html>

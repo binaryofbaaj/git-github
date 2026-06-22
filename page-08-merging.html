@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn how Git merging works — combining branches. Understand fast-forward vs three-way merges and resolve your first merge conflict.">
+  <title>Merging — Git & GitHub Guide</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <div class="scroll-progress"></div>
+  <nav class="navbar"><div class="navbar-left"><button class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button><a href="index.html" class="navbar-logo"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#58A6FF" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#58A6FF"/><line x1="16" y1="2" x2="16" y2="12" stroke="#58A6FF" stroke-width="2"/><line x1="16" y1="20" x2="16" y2="30" stroke="#58A6FF" stroke-width="2"/></svg>Git Guide</a><span class="navbar-title">Merging</span></div><div class="navbar-right"><a href="page-07-branches.html" class="nav-btn">← Prev</a><a href="page-09-remote-repos.html" class="nav-btn primary">Next →</a></div></nav>
+
+  <div class="sidebar-overlay"></div>
+  <aside class="sidebar"><div class="sidebar-section-title">Getting Started</div><a href="index.html" class="sidebar-link"><span class="check"></span><span class="link-text">Welcome</span></a><a href="page-01-what-is-git.html" class="sidebar-link"><span class="check"></span><span class="link-text">1. What Is Git?</span></a><a href="page-02-git-vs-github.html" class="sidebar-link"><span class="check"></span><span class="link-text">2. Git vs GitHub</span></a><a href="page-03-installation-setup.html" class="sidebar-link"><span class="check"></span><span class="link-text">3. Installation & Setup</span></a><div class="sidebar-section-title">Core Concepts</div><a href="page-04-repository.html" class="sidebar-link"><span class="check"></span><span class="link-text">4. Repositories</span></a><a href="page-05-staging-area.html" class="sidebar-link"><span class="check"></span><span class="link-text">5. The Staging Area</span></a><a href="page-06-commits.html" class="sidebar-link"><span class="check"></span><span class="link-text">6. Making Commits</span></a><a href="page-07-branches.html" class="sidebar-link"><span class="check"></span><span class="link-text">7. Branches</span></a><a href="page-08-merging.html" class="sidebar-link active"><span class="check">✓</span><span class="link-text">8. Merging</span></a><div class="sidebar-section-title">Collaboration</div><a href="page-09-remote-repos.html" class="sidebar-link"><span class="check"></span><span class="link-text">9. Remote Repos</span></a><a href="page-10-clone-fork.html" class="sidebar-link"><span class="check"></span><span class="link-text">10. Clone & Fork</span></a><a href="page-11-pull-requests.html" class="sidebar-link"><span class="check"></span><span class="link-text">11. Pull Requests</span></a><div class="sidebar-section-title">Intermediate</div><a href="page-12-git-log-history.html" class="sidebar-link"><span class="check"></span><span class="link-text">12. History & Log</span></a><a href="page-13-undoing-changes.html" class="sidebar-link"><span class="check"></span><span class="link-text">13. Undoing Changes</span></a><a href="page-14-gitignore.html" class="sidebar-link"><span class="check"></span><span class="link-text">14. .gitignore</span></a><a href="page-15-tags-releases.html" class="sidebar-link"><span class="check"></span><span class="link-text">15. Tags & Releases</span></a><div class="sidebar-section-title">Advanced</div><a href="page-16-collaboration-workflow.html" class="sidebar-link"><span class="check"></span><span class="link-text">16. Team Workflows</span></a><a href="page-17-github-features.html" class="sidebar-link"><span class="check"></span><span class="link-text">17. GitHub Features</span></a><a href="page-18-ssh-authentication.html" class="sidebar-link"><span class="check"></span><span class="link-text">18. SSH & Auth</span></a><a href="page-19-best-practices.html" class="sidebar-link"><span class="check"></span><span class="link-text">19. Best Practices</span></a><a href="page-20-cheatsheet.html" class="sidebar-link"><span class="check"></span><span class="link-text">20. Cheat Sheet</span></a></aside>
+
+  <main class="main-wrapper" id="main-content">
+    <div class="page-content">
+      <nav class="breadcrumbs"><a href="index.html">Home</a><span class="separator">›</span><span class="current">Merging</span></nav>
+
+      <header class="page-header">
+        <span class="page-number">Chapter 8 of 20</span>
+        <div class="reading-time">📖 <span class="reading-time-value"></span></div>
+        <h1>Merging: Combining Branches</h1>
+        <p class="page-subtitle">Merging brings work from one branch into another. Sometimes it's smooth, sometimes there are conflicts — and that's okay!</p>
+      </header>
+
+      <section class="animate-on-view">
+        <h2>What Is Merging?</h2>
+        <p>When you're done working on a feature branch, you <span class="glossary-term" tabindex="0">merge<span class="glossary-tooltip"><span class="glossary-tooltip-title">Merge</span>The process of combining changes from one branch into another. Like combining two drafts of a document into one final version.</span></span> it back into <code>main</code> to incorporate your changes.</p>
+
+        <div class="analogy-card">
+          <div class="analogy-title">Real-World Analogy</div>
+          <p>Imagine two people edited the same document separately. Merging is <strong>reconciling both versions into one</strong>. If they edited different paragraphs — easy! If they edited the same paragraph — you need to decide which version to keep.</p>
+        </div>
+
+        <!-- Merge diagram -->
+        <div class="diagram-container" data-animate>
+          <svg viewBox="0 0 700 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+            <title>Two branches merging into one</title>
+            <!-- Main branch -->
+            <line x1="60" y1="150" x2="640" y2="150" stroke="#3FB950" stroke-width="3" class="svg-draw" stroke-dasharray="600" stroke-dashoffset="600"/>
+            <circle cx="120" cy="150" r="12" fill="#3FB950" class="svg-fade-in" style="animation-delay:0.4s"/>
+            <circle cx="250" cy="150" r="12" fill="#3FB950" class="svg-fade-in" style="animation-delay:0.5s"/>
+            <circle cx="550" cy="150" r="16" fill="#D29922" stroke="#D29922" stroke-width="2" class="svg-fade-in" style="animation-delay:1.2s"/>
+            <text x="550" y="155" text-anchor="middle" fill="#0D1117" font-size="9" font-weight="bold" font-family="JetBrains Mono, monospace" class="svg-fade-in" style="animation-delay:1.2s">M</text>
+            <text x="615" y="155" fill="#3FB950" font-size="12" font-weight="bold" font-family="JetBrains Mono, monospace" class="svg-fade-in" style="animation-delay:1.2s">main</text>
+
+            <!-- Feature branch -->
+            <line x1="250" y1="150" x2="320" y2="70" stroke="#BC8CFF" stroke-width="3" class="svg-draw" stroke-dasharray="200" stroke-dashoffset="200" style="animation-delay:0.6s"/>
+            <line x1="320" y1="70" x2="470" y2="70" stroke="#BC8CFF" stroke-width="3" class="svg-draw" stroke-dasharray="200" stroke-dashoffset="200" style="animation-delay:0.7s"/>
+            <line x1="470" y1="70" x2="550" y2="150" stroke="#BC8CFF" stroke-width="3" stroke-dasharray="6,4" class="svg-draw" stroke-dashoffset="200" style="animation-delay:0.9s"/>
+
+            <circle cx="320" cy="70" r="12" fill="#BC8CFF" class="svg-fade-in" style="animation-delay:0.8s"/>
+            <circle cx="400" cy="70" r="12" fill="#BC8CFF" class="svg-fade-in" style="animation-delay:0.9s"/>
+
+            <text x="400" y="50" text-anchor="middle" fill="#BC8CFF" font-size="11" font-weight="bold" font-family="JetBrains Mono, monospace" class="svg-fade-in" style="animation-delay:0.9s">feature</text>
+
+            <!-- Labels -->
+            <text x="550" y="185" text-anchor="middle" fill="#D29922" font-size="10" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:1.3s">← merge commit</text>
+          </svg>
+          <p class="diagram-caption">The feature branch merges back into main, creating a merge commit (M)</p>
+        </div>
+      </section>
+
+      <!-- Merge types -->
+      <section class="animate-on-view">
+        <h2>Two Types of Merges</h2>
+        <div class="comparison-grid">
+          <div class="comparison-card" style="border-top: 3px solid var(--accent-green);">
+            <h4 style="color: var(--accent-green); margin-top:0;">⏩ Fast-Forward Merge</h4>
+            <p>When main hasn't changed since you branched off. Git just "fast-forwards" the main pointer. <strong>No merge commit needed.</strong></p>
+            <p style="color: var(--text-muted); font-size: var(--fs-sm); margin-bottom: 0;">Like: "Nobody touched main while I was away — easy!"</p>
+          </div>
+          <div class="comparison-card" style="border-top: 3px solid var(--accent-purple);">
+            <h4 style="color: var(--accent-purple); margin-top:0;">🔀 Three-Way Merge</h4>
+            <p>When both branches have new commits. Git combines them and creates a <strong>merge commit</strong> to tie the histories together.</p>
+            <p style="color: var(--text-muted); font-size: var(--fs-sm); margin-bottom: 0;">Like: "We both worked on things — let me combine them."</p>
+          </div>
+        </div>
+
+        <div class="command-block">
+          <div class="command-block-header"><div class="command-block-dots"><span></span><span></span><span></span></div><span class="command-block-label">Terminal</span><button class="copy-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy</button></div>
+          <pre><span class="cmd-comment"># Step 1: Switch to the branch you want to merge INTO</span>
+<span class="cmd-command">git</span> <span class="cmd-flag">checkout</span> <span class="cmd-string">main</span>
+
+<span class="cmd-comment"># Step 2: Merge the feature branch into main</span>
+<span class="cmd-command">git</span> <span class="cmd-flag">merge</span> <span class="cmd-string">add-dark-mode</span>
+
+<span class="cmd-comment"># Step 3: Delete the branch (it's been merged)</span>
+<span class="cmd-command">git</span> <span class="cmd-flag">branch</span> <span class="cmd-flag">-d</span> <span class="cmd-string">add-dark-mode</span></pre>
+        </div>
+      </section>
+
+      <!-- Merge Conflicts -->
+      <section class="animate-on-view">
+        <h2>Merge Conflicts: When Two Edits Collide</h2>
+        <p>A <span class="glossary-term" tabindex="0">merge conflict<span class="glossary-tooltip"><span class="glossary-tooltip-title">Merge Conflict</span>Occurs when two branches have edited the same line in the same file differently. Git can't decide which version to keep, so it asks you to resolve it manually.</span></span> happens when two branches changed the <strong>same lines</strong> in the <strong>same file</strong>. Git can't decide which version to keep, so it asks you!</p>
+
+        <p>Here's what a conflict looks like in your file:</p>
+        <div class="command-block">
+          <div class="command-block-header"><div class="command-block-dots"><span></span><span></span><span></span></div><span class="command-block-label">conflicted-file.txt</span></div>
+          <pre><span class="cmd-removed"><<<<<<< HEAD</span>
+<span class="cmd-added">Welcome to our amazing website!</span>
+<span class="cmd-removed">=======</span>
+<span class="cmd-string">Welcome to our beautiful new website!</span>
+<span class="cmd-removed">>>>>>>> feature-branch</span></pre>
+        </div>
+        <p>The part between <code>&lt;&lt;&lt;&lt;&lt;</code> and <code>=======</code> is <strong>your version</strong> (current branch). The part between <code>=======</code> and <code>&gt;&gt;&gt;&gt;&gt;</code> is <strong>their version</strong> (incoming branch).</p>
+      </section>
+
+      <!-- Merge Conflict Resolver -->
+      <section class="animate-on-view">
+        <h2>🎮 Interactive: Resolve a Merge Conflict</h2>
+        <p>Try resolving a conflict yourself! Pick which version to keep:</p>
+
+        <div class="widget-container" id="merge-resolver" data-ours="Welcome to our amazing website!" data-theirs="Welcome to our beautiful new website!">
+          <div class="widget-header">
+            <span class="widget-title">🔀 Merge Conflict Resolver</span>
+          </div>
+          <div class="widget-body">
+            <div class="conflict-editor">
+              <div class="conflict-section ours">
+                <span class="conflict-marker">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD (your branch)</span>
+                <div class="conflict-text">Welcome to our amazing website!</div>
+              </div>
+              <div style="padding: var(--space-sm) var(--space-md); background: var(--bg-surface); border-bottom: 1px solid var(--border-default);">
+                <span class="conflict-marker" style="padding: 0;">=======</span>
+              </div>
+              <div class="conflict-section theirs">
+                <span class="conflict-marker">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-branch (their branch)</span>
+                <div class="conflict-text">Welcome to our beautiful new website!</div>
+              </div>
+              <div class="conflict-btn-row">
+                <button class="widget-btn green" id="resolve-ours">✅ Keep Ours</button>
+                <button class="widget-btn" id="resolve-theirs">✅ Keep Theirs</button>
+                <button class="widget-btn purple" id="resolve-both">✅ Keep Both</button>
+                <button class="widget-btn orange" id="resolve-commit" style="display: none;">git commit (finalize)</button>
+              </div>
+            </div>
+
+            <div id="resolve-result" style="display: none; margin-top: var(--space-md); padding: var(--space-md); background: var(--bg-primary); border: 1px solid var(--accent-green); border-radius: var(--border-radius-md); font-family: var(--font-mono); font-size: var(--fs-sm); color: var(--accent-green); white-space: pre-wrap;"></div>
+            <div id="resolve-success"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="animate-on-view">
+        <h2>Key Takeaways</h2>
+        <div class="success-box"><p><strong>🎉 You can now merge branches and resolve conflicts!</strong></p></div>
+        <ul>
+          <li><strong>Merging</strong> combines changes from one branch into another</li>
+          <li><strong>Fast-forward</strong> = simple catch-up. <strong>Three-way</strong> = both branches changed</li>
+          <li><strong>Merge conflicts</strong> happen when the same lines were edited differently</li>
+          <li>Resolve conflicts by <strong>editing the file</strong>, removing the markers, and committing</li>
+          <li>Conflicts are <strong>normal</strong> — don't be scared of them!</li>
+        </ul>
+      </section>
+
+      <nav class="page-nav">
+        <a href="page-07-branches.html" class="page-nav-link prev"><span class="page-nav-label">← Previous</span><span class="page-nav-title">Branches</span></a>
+        <a href="page-09-remote-repos.html" class="page-nav-link next"><span class="page-nav-label">Next Concept →</span><span class="page-nav-title">Remote Repos</span></a>
+      </nav>
+      <footer class="page-footer"><p>Chapter 8 of 20 — Git & GitHub Visual Guide</p></footer>
+    </div>
+  </main>
+  <script src="main.js"></script>
+</body>
+</html>

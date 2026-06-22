@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete Git & GitHub cheatsheet — search, filter, copy, and print over 50 essential Git commands. Classified by danger level.">
+  <title>Git & GitHub Cheat Sheet — Reference Card</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Cheat Sheet specific page custom styling */
+    .cheatsheet-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-xl);
+    }
+    .print-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-weight: 600;
+    }
+    .cheat-card-command {
+      position: relative;
+      background: var(--bg-surface-raised);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--border-radius-sm);
+      border: 1px solid var(--border-default);
+      transition: all var(--transition-fast);
+      user-select: all;
+    }
+    .cheat-card-command:hover {
+      color: var(--accent-blue);
+      border-color: var(--accent-blue-dim);
+    }
+    .cheat-card-command::after {
+      content: '📋';
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: var(--fs-xs);
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+    }
+    .cheat-card-command:hover::after {
+      opacity: 0.7;
+    }
+    
+    @media print {
+      .cheatsheet-actions, .search-box {
+        display: none !important;
+      }
+      .cheat-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: var(--space-sm) !important;
+      }
+      .category-section {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a><div class="scroll-progress" role="progressbar" aria-label="Reading progress"></div>
+  
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="navbar-left">
+      <button class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="index.html" class="navbar-logo" aria-label="Git & GitHub Guide Home">
+        <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#58A6FF" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#58A6FF"/><line x1="16" y1="2" x2="16" y2="12" stroke="#58A6FF" stroke-width="2"/><line x1="16" y1="20" x2="16" y2="30" stroke="#58A6FF" stroke-width="2"/></svg>
+        Git Guide
+      </a>
+      <span class="navbar-title">Cheat Sheet</span>
+    </div>
+    <div class="navbar-right">
+      <a href="page-19-best-practices.html" class="nav-btn">← Prev</a>
+      <button onclick="window.print()" class="nav-btn primary print-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Print PDF
+      </button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <aside class="sidebar" aria-label="Course navigation">
+    <div class="sidebar-section-title">Getting Started</div>
+    <a href="index.html" class="sidebar-link"><span class="check"></span><span class="link-text">Welcome</span></a>
+    <a href="page-01-what-is-git.html" class="sidebar-link"><span class="check"></span><span class="link-text">1. What Is Git?</span></a>
+    <a href="page-02-git-vs-github.html" class="sidebar-link"><span class="check"></span><span class="link-text">2. Git vs GitHub</span></a>
+    <a href="page-03-installation-setup.html" class="sidebar-link"><span class="check"></span><span class="link-text">3. Installation & Setup</span></a>
+
+    <div class="sidebar-section-title">Core Concepts</div>
+    <a href="page-04-repository.html" class="sidebar-link"><span class="check"></span><span class="link-text">4. Repositories</span></a>
+    <a href="page-05-staging-area.html" class="sidebar-link"><span class="check"></span><span class="link-text">5. The Staging Area</span></a>
+    <a href="page-06-commits.html" class="sidebar-link"><span class="check"></span><span class="link-text">6. Making Commits</span></a>
+    <a href="page-07-branches.html" class="sidebar-link"><span class="check"></span><span class="link-text">7. Branches</span></a>
+    <a href="page-08-merging.html" class="sidebar-link"><span class="check"></span><span class="link-text">8. Merging</span></a>
+
+    <div class="sidebar-section-title">Collaboration</div>
+    <a href="page-09-remote-repos.html" class="sidebar-link"><span class="check"></span><span class="link-text">9. Remote Repos</span></a>
+    <a href="page-10-clone-fork.html" class="sidebar-link"><span class="check"></span><span class="link-text">10. Clone & Fork</span></a>
+    <a href="page-11-pull-requests.html" class="sidebar-link"><span class="check"></span><span class="link-text">11. Pull Requests</span></a>
+
+    <div class="sidebar-section-title">Intermediate</div>
+    <a href="page-12-git-log-history.html" class="sidebar-link"><span class="check"></span><span class="link-text">12. History & Log</span></a>
+    <a href="page-13-undoing-changes.html" class="sidebar-link"><span class="check"></span><span class="link-text">13. Undoing Changes</span></a>
+    <a href="page-14-gitignore.html" class="sidebar-link"><span class="check"></span><span class="link-text">14. .gitignore</span></a>
+    <a href="page-15-tags-releases.html" class="sidebar-link"><span class="check"></span><span class="link-text">15. Tags & Releases</span></a>
+
+    <div class="sidebar-section-title">Advanced</div>
+    <a href="page-16-collaboration-workflow.html" class="sidebar-link"><span class="check"></span><span class="link-text">16. Team Workflows</span></a>
+    <a href="page-17-github-features.html" class="sidebar-link"><span class="check"></span><span class="link-text">17. GitHub Features</span></a>
+    <a href="page-18-ssh-authentication.html" class="sidebar-link"><span class="check"></span><span class="link-text">18. SSH & Auth</span></a>
+    <a href="page-19-best-practices.html" class="sidebar-link"><span class="check"></span><span class="link-text">19. Best Practices</span></a>
+    <a href="page-20-cheatsheet.html" class="sidebar-link active"><span class="check">✓</span><span class="link-text">20. Cheat Sheet</span></a>
+  </aside>
+
+  <main class="main-wrapper" id="main-content">
+    <div class="page-content">
+      <nav class="breadcrumbs" aria-label="Breadcrumbs"><a href="index.html">Home</a><span class="separator">›</span><span class="current">Cheat Sheet</span></nav>
+      
+      <header class="page-header">
+        <span class="page-number">Chapter 20 of 20</span>
+        <div class="reading-time">📖 <span class="reading-time-value"></span></div>
+        <h1>Interactive Git Cheat Sheet</h1>
+        <p class="page-subtitle">Your ultimate command reference card. Search in real-time, click any command to copy, or print/save as PDF.</p>
+      </header>
+
+      <div class="cheatsheet-actions">
+        <div class="search-box" style="flex-grow: 1; margin: 0;">
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="command-search" class="search-input" placeholder="Search 50+ commands (e.g. status, commit, branch, undo)..." aria-label="Search Git commands">
+        </div>
+      </div>
+
+      <!-- Category 1 -->
+      <section class="category-section animate-on-view">
+        <h2>1. Setup & Configuration</h2>
+        <p class="section-desc text-muted" style="font-size: var(--fs-sm); margin-bottom: var(--space-md);">Configure your identity, default preferences, and terminal visuals.</p>
+        <div class="cheat-grid">
+          <div class="cheat-card">
+            <div class="cheat-card-command">git config --global user.name "John Doe"</div>
+            <div class="cheat-card-desc">Set the name associated with all your commit transactions.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">👤</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git config --global user.email "john@example.com"</div>
+            <div class="cheat-card-desc">Set the email associated with all your commit transactions.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">✉️</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git config --global init.defaultBranch main</div>
+            <div class="cheat-card-desc">Set the default branch name to 'main' for new repositories.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🌿</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git config --global color.ui auto</div>
+            <div class="cheat-card-desc">Enable helpful colorization of command-line output.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🎨</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git config --list</div>
+            <div class="cheat-card-desc">Show all Git configuration settings currently active on your system.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">⚙️</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git config --global --edit</div>
+            <div class="cheat-card-desc">Open your global configuration file directly in a text editor.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">✏️</span>
+              <span class="danger-badge caution">Caution</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category 2 -->
+      <section class="category-section animate-on-view">
+        <h2>2. Starting a Project</h2>
+        <p class="section-desc text-muted" style="font-size: var(--fs-sm); margin-bottom: var(--space-md);">Initialize new repositories or clone existing ones from remotes.</p>
+        <div class="cheat-grid">
+          <div class="cheat-card">
+            <div class="cheat-card-command">git init</div>
+            <div class="cheat-card-desc">Initialize a new, blank local Git repository in the current directory.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">📁</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git clone [url]</div>
+            <div class="cheat-card-desc">Download a repository from GitHub to your local machine.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">📥</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git remote -v</div>
+            <div class="cheat-card-desc">List all remote repositories linked to your local repository.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🌐</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git remote add origin [url]</div>
+            <div class="cheat-card-desc">Associate a remote GitHub URL with the shortcut name 'origin'.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">➕</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git remote rename [old] [new]</div>
+            <div class="cheat-card-desc">Rename a remote repository shortcut name (e.g. master to main-remote).</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">✏️</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git remote remove [name]</div>
+            <div class="cheat-card-desc">Disconnect your local repository from a remote configuration.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">❌</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category 3 -->
+      <section class="category-section animate-on-view">
+        <h2>3. Staging & Committing</h2>
+        <p class="section-desc text-muted" style="font-size: var(--fs-sm); margin-bottom: var(--space-md);">Pack changes into the staging area and save them permanently to repository history.</p>
+        <div class="cheat-grid">
+          <div class="cheat-card">
+            <div class="cheat-card-command">git status</div>
+            <div class="cheat-card-desc">Show the state of modified/untracked files in the working directory.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🔍</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git add [file]</div>
+            <div class="cheat-card-desc">Add a specific file to the staging area (preparing it for a commit).</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">📄</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git add .</div>
+            <div class="cheat-card-desc">Add all new, modified, and deleted files in the directory to staging.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">📁</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git add -p</div>
+            <div class="cheat-card-desc">Interactively review and select specific parts (hunks) of files to stage.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">✂️</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git commit -m "message"</div>
+            <div class="cheat-card-desc">Save staged changes as a new project snapshot with a description.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">💾</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git commit -am "message"</div>
+            <div class="cheat-card-desc">Automatically stage all tracked, modified files and commit them.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">⚡</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git commit --amend</div>
+            <div class="cheat-card-desc">Combine staged changes with the last commit to fix mistakes or update messages.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">✏️</span>
+              <span class="danger-badge caution">Caution</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category 4 -->
+      <section class="category-section animate-on-view">
+        <h2>4. Branching</h2>
+        <p class="section-desc text-muted" style="font-size: var(--fs-sm); margin-bottom: var(--space-md);">Work in parallel timelines to develop features or test bugs safely.</p>
+        <div class="cheat-grid">
+          <div class="cheat-card">
+            <div class="cheat-card-command">git branch</div>
+            <div class="cheat-card-desc">List all local branches. The active branch is highlighted.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🌿</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git branch -r</div>
+            <div class="cheat-card-desc">List all remote branches tracked in your repository.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🌐</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git branch -a</div>
+            <div class="cheat-card-desc">List all local and remote branches in one view.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🌿</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git branch [branch-name]</div>
+            <div class="cheat-card-desc">Create a new branch from your current location, but do not switch to it.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">➕</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git checkout [branch]</div>
+            <div class="cheat-card-desc">Switch your working directory to the specified branch.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🔄</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git switch [branch]</div>
+            <div class="cheat-card-desc">The modern, dedicated command to switch between branches.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🔄</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git checkout -b [branch]</div>
+            <div class="cheat-card-desc">Create a new branch and switch to it immediately in one command.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🌿</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git switch -c [branch]</div>
+            <div class="cheat-card-desc">The modern way to create a branch and switch to it immediately.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🌿</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git branch -d [branch]</div>
+            <div class="cheat-card-desc">Delete a branch safely. Git warns if the branch has unmerged work.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🗑️</span>
+              <span class="danger-badge caution">Caution</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git branch -D [branch]</div>
+            <div class="cheat-card-desc">Force delete a branch, ignoring merge safety checks. Can lose work!</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">⚠️</span>
+              <span class="danger-badge destructive">Destructive</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category 5 -->
+      <section class="category-section animate-on-view">
+        <h2>5. Merging & Rebase</h2>
+        <p class="section-desc text-muted" style="font-size: var(--fs-sm); margin-bottom: var(--space-md);">Integrate branches together or resolve conflicts during code integration.</p>
+        <div class="cheat-grid">
+          <div class="cheat-card">
+            <div class="cheat-card-command">git merge [branch]</div>
+            <div class="cheat-card-desc">Merge commits from the target branch into your active branch.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🔀</span>
+              <span class="danger-badge caution">Caution</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git merge --abort</div>
+            <div class="cheat-card-desc">Stop a merge conflict state and restore files to pre-merge state.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🛑</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git merge --continue</div>
+            <div class="cheat-card-desc">Finalize a merge commit after resolving any file conflicts.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">▶️</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git rebase [branch]</div>
+            <div class="cheat-card-desc">Re-apply commits from your current branch on top of another branch.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🔄</span>
+              <span class="danger-badge caution">Caution</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git rebase --abort</div>
+            <div class="cheat-card-desc">Abort an active rebase and return your branch to its original state.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🛑</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category 6 -->
+      <section class="category-section animate-on-view">
+        <h2>6. Collaboration & Remote Syncing</h2>
+        <p class="section-desc text-muted" style="font-size: var(--fs-sm); margin-bottom: var(--space-md);">Upload, download, and synchronize code with GitHub or other servers.</p>
+        <div class="cheat-grid">
+          <div class="cheat-card">
+            <div class="cheat-card-command">git fetch</div>
+            <div class="cheat-card-desc">Download new history, branches, and tags from remote without merging them.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">📥</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git pull</div>
+            <div class="cheat-card-desc">Fetch remote changes and immediately merge them into your local branch.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">📥</span>
+              <span class="danger-badge caution">Caution</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git push [remote] [branch]</div>
+            <div class="cheat-card-desc">Upload your local commits to the remote repository.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">📤</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git push -u origin [branch]</div>
+            <div class="cheat-card-desc">Push your branch and link it to the remote branch for simple future pulls/pushes.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">📌</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git push --force</div>
+            <div class="cheat-card-desc">Force upload commits, overwriting remote history. Highly dangerous in teams!</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">⚠️</span>
+              <span class="danger-badge destructive">Destructive</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git push --force-with-lease</div>
+            <div class="cheat-card-desc">Safer force push. Stops if someone else has pushed new remote commits.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🛡️</span>
+              <span class="danger-badge caution">Caution</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category 7 -->
+      <section class="category-section animate-on-view">
+        <h2>7. Inspecting History</h2>
+        <p class="section-desc text-muted" style="font-size: var(--fs-sm); margin-bottom: var(--space-md);">Explore the logs, compare differences, and inspect commit changes.</p>
+        <div class="cheat-grid">
+          <div class="cheat-card">
+            <div class="cheat-card-command">git log</div>
+            <div class="cheat-card-desc">Show the chronological list of commits for the active branch.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">📜</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git log --oneline</div>
+            <div class="cheat-card-desc">Display commit logs in a compact, single-line format.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">📏</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git log --graph --oneline --all</div>
+            <div class="cheat-card-desc">Show an ASCII graphical branch structure alongside commit history.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">📊</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git diff</div>
+            <div class="cheat-card-desc">Show unstaged changes in files that have not yet been added.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🔍</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git diff --staged</div>
+            <div class="cheat-card-desc">Show differences between staged files and the last committed files.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🔍</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git diff [branch1] [branch2]</div>
+            <div class="cheat-card-desc">Compare and show all changes between branch1 and branch2.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🔍</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git show [commit]</div>
+            <div class="cheat-card-desc">Display metadata, message, and changes made in a specific commit hash.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">👀</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git blame [file]</div>
+            <div class="cheat-card-desc">Display line-by-line which commit and author changed each part of a file.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">👤</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category 8 -->
+      <section class="category-section animate-on-view">
+        <h2>8. Undoing & Restoring</h2>
+        <p class="section-desc text-muted" style="font-size: var(--fs-sm); margin-bottom: var(--space-md);">Correct mistakes, revert historical commits, or clear your working folder.</p>
+        <div class="cheat-grid">
+          <div class="cheat-card">
+            <div class="cheat-card-command">git restore [file]</div>
+            <div class="cheat-card-desc">Discard local edits, restoring the file to the last committed version.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">⏪</span>
+              <span class="danger-badge caution">Caution</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git restore --staged [file]</div>
+            <div class="cheat-card-desc">Unstage a file, keeping its changes in the working directory.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">📤</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git reset HEAD [file]</div>
+            <div class="cheat-card-desc">Unstage a file (an older legacy equivalent of git restore --staged).</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">⏪</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git reset --soft HEAD~1</div>
+            <div class="cheat-card-desc">Undo the last commit. Changes are kept in the staging area.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">⏪</span>
+              <span class="danger-badge caution">Caution</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git reset --mixed HEAD~1</div>
+            <div class="cheat-card-desc">Undo the last commit and unstage files. Edits are kept in working directory.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">⏪</span>
+              <span class="danger-badge caution">Caution</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git reset --hard HEAD~1</div>
+            <div class="cheat-card-desc">Undo the last commit and delete all file edits. Destroyed changes are unrecoverable!</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">💥</span>
+              <span class="danger-badge destructive">Destructive</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git revert [commit]</div>
+            <div class="cheat-card-desc">Create a new commit that applies opposite edits to safely undo a previous commit.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🛡️</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git clean -df</div>
+            <div class="cheat-card-desc">Permanently delete all untracked files and folders in your repository.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🧹</span>
+              <span class="danger-badge destructive">Destructive</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category 9 -->
+      <section class="category-section animate-on-view">
+        <h2>9. Stashing Changes</h2>
+        <p class="section-desc text-muted" style="font-size: var(--fs-sm); margin-bottom: var(--space-md);">Temporarily shell away unfinished changes to clean your workspace.</p>
+        <div class="cheat-grid">
+          <div class="cheat-card">
+            <div class="cheat-card-command">git stash</div>
+            <div class="cheat-card-desc">Store all tracked, uncommitted changes and revert files to last commit state.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">📦</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git stash save "message"</div>
+            <div class="cheat-card-desc">Save a stash with a custom text tag to easily identify it.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🏷️</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git stash list</div>
+            <div class="cheat-card-desc">Show all stashes currently stored in your repository.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">📋</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git stash pop</div>
+            <div class="cheat-card-desc">Restore the latest stashed changes and remove them from stash storage.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">📤</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git stash apply</div>
+            <div class="cheat-card-desc">Restore the latest stashed changes but keep them saved in stash storage.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🔄</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git stash drop stash@{0}</div>
+            <div class="cheat-card-desc">Permanently discard a specific stash from the stash storage list.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🗑️</span>
+              <span class="danger-badge destructive">Destructive</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git stash clear</div>
+            <div class="cheat-card-desc">Permanently delete all stashed snapshots from the repository storage.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">⚠️</span>
+              <span class="danger-badge destructive">Destructive</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category 10 -->
+      <section class="category-section animate-on-view">
+        <h2>10. Tagging & Releases</h2>
+        <p class="section-desc text-muted" style="font-size: var(--fs-sm); margin-bottom: var(--space-md);">Tag milestones, specific release versions, and publish versions.</p>
+        <div class="cheat-grid">
+          <div class="cheat-card">
+            <div class="cheat-card-command">git tag</div>
+            <div class="cheat-card-desc">List all historical tags/releases in the local repository.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🏷️</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git tag -a v1.0.0 -m "message"</div>
+            <div class="cheat-card-desc">Create a new local annotated tag at the current commit.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">📌</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git tag -d v1.0.0</div>
+            <div class="cheat-card-desc">Delete a version tag locally from your computer.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🗑️</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git push origin v1.0.0</div>
+            <div class="cheat-card-desc">Push a specific version tag to the remote repository (GitHub).</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">📤</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git push origin --tags</div>
+            <div class="cheat-card-desc">Push all local release version tags to origin remote.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">📤</span>
+              <span class="danger-badge safe">Safe</span>
+            </div>
+          </div>
+          <div class="cheat-card">
+            <div class="cheat-card-command">git push origin --delete v1.0.0</div>
+            <div class="cheat-card-desc">Delete a release version tag from origin remote.</div>
+            <div class="cheat-card-footer">
+              <span class="cheat-card-icon">🗑️</span>
+              <span class="danger-badge caution">Caution</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <nav class="page-nav">
+        <a href="page-19-best-practices.html" class="page-nav-link prev">
+          <span class="page-nav-label">← Previous</span>
+          <span class="page-nav-title">Best Practices</span>
+        </a>
+        <a href="index.html" class="page-nav-link next">
+          <span class="page-nav-label">Course Completed! 🎉</span>
+          <span class="page-nav-title">Back to Welcome</span>
+        </a>
+      </nav>
+
+      <footer class="page-footer">
+        <p>Chapter 20 of 20 — Git & GitHub Visual Guide</p>
+        <p style="font-size: var(--fs-xs); margin-top: var(--space-xs); opacity: 0.8;">Built with ❤️ by baaj to help everyone learn Git & GitHub. No prior experience needed.</p>
+      </footer>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+  <script>
+    // Premium interactive copy behavior
+    document.querySelectorAll('.cheat-card-command').forEach(el => {
+      el.style.cursor = 'pointer';
+      el.setAttribute('title', 'Click to copy command');
+      el.addEventListener('click', () => {
+        const text = el.textContent.trim();
+        navigator.clipboard.writeText(text).then(() => {
+          const origColor = el.style.color;
+          const origText = el.textContent;
+          el.style.color = 'var(--accent-green)';
+          el.textContent = '✓ Copied!';
+          setTimeout(() => {
+            el.style.color = origColor;
+            el.textContent = origText;
+          }, 1200);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

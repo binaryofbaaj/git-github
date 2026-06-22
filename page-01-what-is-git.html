@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn what Git is — a version control system that acts like a time machine for your files. Explained with plain English analogies.">
+  <meta property="og:title" content="What Is Git? — Git & GitHub Guide">
+  <title>What Is Git? — Git & GitHub Guide</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <div class="scroll-progress" role="progressbar" aria-label="Reading progress"></div>
+
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="navbar-left">
+      <button class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="index.html" class="navbar-logo">
+        <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#58A6FF" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#58A6FF"/><line x1="16" y1="2" x2="16" y2="12" stroke="#58A6FF" stroke-width="2"/><line x1="16" y1="20" x2="16" y2="30" stroke="#58A6FF" stroke-width="2"/></svg>
+        Git Guide
+      </a>
+      <span class="navbar-title">What Is Git?</span>
+    </div>
+    <div class="navbar-right">
+      <a href="index.html" class="nav-btn">← Home</a>
+      <a href="page-02-git-vs-github.html" class="nav-btn primary">Next →</a>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <aside class="sidebar" aria-label="Course navigation">
+    <div class="sidebar-section-title">Getting Started</div>
+    <a href="index.html" class="sidebar-link"><span class="check"></span><span class="link-text">Welcome</span></a>
+    <a href="page-01-what-is-git.html" class="sidebar-link active"><span class="check">✓</span><span class="link-text">1. What Is Git?</span></a>
+    <a href="page-02-git-vs-github.html" class="sidebar-link"><span class="check"></span><span class="link-text">2. Git vs GitHub</span></a>
+    <a href="page-03-installation-setup.html" class="sidebar-link"><span class="check"></span><span class="link-text">3. Installation & Setup</span></a>
+    <div class="sidebar-section-title">Core Concepts</div>
+    <a href="page-04-repository.html" class="sidebar-link"><span class="check"></span><span class="link-text">4. Repositories</span></a>
+    <a href="page-05-staging-area.html" class="sidebar-link"><span class="check"></span><span class="link-text">5. The Staging Area</span></a>
+    <a href="page-06-commits.html" class="sidebar-link"><span class="check"></span><span class="link-text">6. Making Commits</span></a>
+    <a href="page-07-branches.html" class="sidebar-link"><span class="check"></span><span class="link-text">7. Branches</span></a>
+    <a href="page-08-merging.html" class="sidebar-link"><span class="check"></span><span class="link-text">8. Merging</span></a>
+    <div class="sidebar-section-title">Collaboration</div>
+    <a href="page-09-remote-repos.html" class="sidebar-link"><span class="check"></span><span class="link-text">9. Remote Repos</span></a>
+    <a href="page-10-clone-fork.html" class="sidebar-link"><span class="check"></span><span class="link-text">10. Clone & Fork</span></a>
+    <a href="page-11-pull-requests.html" class="sidebar-link"><span class="check"></span><span class="link-text">11. Pull Requests</span></a>
+    <div class="sidebar-section-title">Intermediate</div>
+    <a href="page-12-git-log-history.html" class="sidebar-link"><span class="check"></span><span class="link-text">12. History & Log</span></a>
+    <a href="page-13-undoing-changes.html" class="sidebar-link"><span class="check"></span><span class="link-text">13. Undoing Changes</span></a>
+    <a href="page-14-gitignore.html" class="sidebar-link"><span class="check"></span><span class="link-text">14. .gitignore</span></a>
+    <a href="page-15-tags-releases.html" class="sidebar-link"><span class="check"></span><span class="link-text">15. Tags & Releases</span></a>
+    <div class="sidebar-section-title">Advanced</div>
+    <a href="page-16-collaboration-workflow.html" class="sidebar-link"><span class="check"></span><span class="link-text">16. Team Workflows</span></a>
+    <a href="page-17-github-features.html" class="sidebar-link"><span class="check"></span><span class="link-text">17. GitHub Features</span></a>
+    <a href="page-18-ssh-authentication.html" class="sidebar-link"><span class="check"></span><span class="link-text">18. SSH & Auth</span></a>
+    <a href="page-19-best-practices.html" class="sidebar-link"><span class="check"></span><span class="link-text">19. Best Practices</span></a>
+    <a href="page-20-cheatsheet.html" class="sidebar-link"><span class="check"></span><span class="link-text">20. Cheat Sheet</span></a>
+  </aside>
+
+  <main class="main-wrapper" id="main-content">
+    <div class="page-content">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="separator">›</span>
+        <span class="current">What Is Git?</span>
+      </nav>
+
+      <header class="page-header">
+        <span class="page-number">Chapter 1 of 20</span>
+        <div class="reading-time">📖 <span class="reading-time-value"></span></div>
+        <h1>What Is Git?</h1>
+        <p class="page-subtitle">Think of Git as a time machine for your files — it remembers every change you've ever made and lets you travel back to any moment.</p>
+      </header>
+
+      <!-- The Problem -->
+      <section class="animate-on-view">
+        <h2>The Problem Git Solves</h2>
+        <p>Before we talk about what Git <em>is</em>, let's talk about the problem it solves. You've almost certainly experienced this:</p>
+
+        <div class="diagram-container" data-animate>
+          <svg viewBox="0 0 700 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+            <title>Without Git: Chaotic file naming</title>
+            <desc>A pile of files with increasingly desperate names like final_v2_FINAL_real.docx</desc>
+            <!-- Chaos files -->
+            <rect x="40" y="20" width="180" height="50" rx="8" fill="#1C2129" stroke="#F85149" stroke-width="1.5" class="svg-fade-in"/>
+            <text x="50" y="50" fill="#F85149" font-size="12" font-family="JetBrains Mono, monospace" class="svg-fade-in">📄 report_v1.docx</text>
+
+            <rect x="60" y="80" width="220" height="50" rx="8" fill="#1C2129" stroke="#F85149" stroke-width="1.5" class="svg-fade-in" style="animation-delay:0.15s"/>
+            <text x="70" y="110" fill="#F85149" font-size="12" font-family="JetBrains Mono, monospace" class="svg-fade-in" style="animation-delay:0.15s">📄 report_v2_edits.docx</text>
+
+            <rect x="30" y="140" width="260" height="50" rx="8" fill="#1C2129" stroke="#F85149" stroke-width="1.5" class="svg-fade-in" style="animation-delay:0.3s"/>
+            <text x="40" y="170" fill="#F85149" font-size="12" font-family="JetBrains Mono, monospace" class="svg-fade-in" style="animation-delay:0.3s">📄 report_v2_FINAL.docx</text>
+
+            <rect x="50" y="200" width="310" height="50" rx="8" fill="#1C2129" stroke="#D29922" stroke-width="1.5" class="svg-fade-in" style="animation-delay:0.45s"/>
+            <text x="60" y="230" fill="#D29922" font-size="12" font-family="JetBrains Mono, monospace" class="svg-fade-in" style="animation-delay:0.45s">📄 report_ACTUAL_FINAL_v3.docx</text>
+
+            <rect x="70" y="260" width="340" height="50" rx="8" fill="#1C2129" stroke="#D29922" stroke-width="2" class="svg-fade-in" style="animation-delay:0.6s"/>
+            <text x="80" y="290" fill="#D29922" font-size="12" font-family="JetBrains Mono, monospace" class="svg-fade-in" style="animation-delay:0.6s">📄 report_USE_THIS_ONE_REAL.docx</text>
+
+            <!-- Arrow + With Git -->
+            <line x1="420" y1="160" x2="460" y2="160" stroke="#58A6FF" stroke-width="2" class="svg-fade-in" style="animation-delay:0.8s"/>
+            <polygon points="460,155 470,160 460,165" fill="#58A6FF" class="svg-fade-in" style="animation-delay:0.8s"/>
+
+            <!-- Clean Git version -->
+            <rect x="490" y="40" width="190" height="50" rx="8" fill="#1C2129" stroke="#3FB950" stroke-width="2" class="svg-fade-in" style="animation-delay:0.9s"/>
+            <text x="500" y="70" fill="#3FB950" font-size="13" font-family="JetBrains Mono, monospace" font-weight="bold" class="svg-fade-in" style="animation-delay:0.9s">📄 report.docx</text>
+
+            <!-- Timeline -->
+            <line x1="585" y1="110" x2="585" y2="290" stroke="#30363D" stroke-width="2" class="svg-fade-in" style="animation-delay:1s"/>
+
+            <circle cx="585" cy="130" r="6" fill="#3FB950" class="svg-fade-in" style="animation-delay:1.1s"/>
+            <text x="600" y="135" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:1.1s">v3 — Final edits</text>
+
+            <circle cx="585" cy="180" r="6" fill="#58A6FF" class="svg-fade-in" style="animation-delay:1.2s"/>
+            <text x="600" y="185" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:1.2s">v2 — Revisions</text>
+
+            <circle cx="585" cy="230" r="6" fill="#58A6FF" class="svg-fade-in" style="animation-delay:1.3s"/>
+            <text x="600" y="235" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:1.3s">v1 — First draft</text>
+
+            <circle cx="585" cy="280" r="6" fill="#8B949E" class="svg-fade-in" style="animation-delay:1.4s"/>
+            <text x="600" y="285" fill="#8B949E" font-size="11" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:1.4s">Initial commit</text>
+          </svg>
+          <p class="diagram-caption">Left: The chaos of manual versioning. Right: Git's clean timeline of saved states.</p>
+        </div>
+
+        <p>Sound familiar? This is what happens when you try to keep track of versions manually. It's messy, confusing, and you're always terrified of losing work.</p>
+      </section>
+
+      <!-- What Git Is -->
+      <section class="animate-on-view">
+        <h2>So What IS Git, Exactly?</h2>
+        <p><strong>Git</strong> is a <span class="glossary-term" tabindex="0">Version Control System<span class="glossary-tooltip"><span class="glossary-tooltip-title">Version Control System (VCS)</span>A tool that records changes to files over time so you can recall specific versions later. Think of it like an unlimited undo button for your entire project.</span></span></strong> — software that tracks every change made to your files over time.</p>
+
+        <div class="analogy-card">
+          <div class="analogy-title">Real-World Analogy</div>
+          <p>Imagine if Microsoft Word's "Track Changes" feature had <strong>infinite save slots</strong>, could save your <em>entire</em> project folder at once (not just one file), and let you create alternate timelines to experiment safely. That's Git.</p>
+        </div>
+
+        <p>Here's what Git lets you do:</p>
+        <ul>
+          <li><strong>Save snapshots</strong> of your project at any point (called <span class="glossary-term" tabindex="0">commits<span class="glossary-tooltip"><span class="glossary-tooltip-title">Commit</span>A saved snapshot of your project at a specific point in time. Like pressing "Save" in a video game.</span></span>)</li>
+          <li><strong>Go back in time</strong> to any previous snapshot</li>
+          <li><strong>See what changed</strong> between any two snapshots</li>
+          <li><strong>Experiment safely</strong> on separate <span class="glossary-term" tabindex="0">branches<span class="glossary-tooltip"><span class="glossary-tooltip-title">Branch</span>A parallel copy of your project where you can make changes without affecting the original. Like an alternate timeline in a movie.</span></span> without breaking anything</li>
+          <li><strong>Collaborate with others</strong> without overwriting each other's work</li>
+        </ul>
+      </section>
+
+      <!-- Timeline of Git -->
+      <section class="animate-on-view">
+        <h2>A Brief History of Git</h2>
+        <p>Git was created in 2005 by <strong>Linus Torvalds</strong> — the same person who created the Linux operating system. He built Git because he needed a fast, reliable way for thousands of developers to work together on Linux without stepping on each other's toes.</p>
+
+        <div class="diagram-container" data-animate>
+          <svg viewBox="0 0 700 100" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+            <title>Timeline of Git's creation</title>
+            <desc>2005: Git created by Linus Torvalds. Now: Used by 100M+ developers worldwide.</desc>
+            <line x1="80" y1="50" x2="620" y2="50" stroke="#30363D" stroke-width="2" class="svg-draw" stroke-dasharray="600" stroke-dashoffset="600"/>
+            <circle cx="120" cy="50" r="10" fill="#D29922" class="svg-fade-in" style="animation-delay:0.5s"/>
+            <text x="120" y="30" text-anchor="middle" fill="#D29922" font-size="13" font-weight="bold" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.5s">2005</text>
+            <text x="120" y="80" text-anchor="middle" fill="#8B949E" font-size="10" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.6s">Git created</text>
+
+            <circle cx="280" cy="50" r="10" fill="#58A6FF" class="svg-fade-in" style="animation-delay:0.7s"/>
+            <text x="280" y="30" text-anchor="middle" fill="#58A6FF" font-size="13" font-weight="bold" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.7s">2008</text>
+            <text x="280" y="80" text-anchor="middle" fill="#8B949E" font-size="10" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.8s">GitHub launches</text>
+
+            <circle cx="440" cy="50" r="10" fill="#BC8CFF" class="svg-fade-in" style="animation-delay:0.9s"/>
+            <text x="440" y="30" text-anchor="middle" fill="#BC8CFF" font-size="13" font-weight="bold" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:0.9s">2018</text>
+            <text x="440" y="80" text-anchor="middle" fill="#8B949E" font-size="10" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:1s">Microsoft buys GitHub</text>
+
+            <circle cx="580" cy="50" r="12" fill="#3FB950" class="svg-fade-in" style="animation-delay:1.1s"/>
+            <text x="580" y="30" text-anchor="middle" fill="#3FB950" font-size="13" font-weight="bold" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:1.1s">Now</text>
+            <text x="580" y="80" text-anchor="middle" fill="#8B949E" font-size="10" font-family="Inter, sans-serif" class="svg-fade-in" style="animation-delay:1.2s">100M+ developers</text>
+          </svg>
+        </div>
+
+        <div class="tip-box">
+          <p>Fun fact: Linus built the first version of Git in just <strong>2 weeks</strong>. It has since become the most widely used version control system in the world — and it's completely <strong>free and open source</strong>.</p>
+        </div>
+      </section>
+
+      <!-- Interactive: git init -->
+      <section class="animate-on-view">
+        <h2>Your First Git Command: <code>git init</code></h2>
+        <p>When you tell Git to start tracking a folder, you run a command called <code>git init</code>. This turns a regular folder into a <span class="glossary-term" tabindex="0">repository<span class="glossary-tooltip"><span class="glossary-tooltip-title">Repository (Repo)</span>A folder that Git is tracking. It contains your files plus a hidden .git folder where Git stores its history and settings.</span></span> (or "repo" for short).</p>
+
+        <h3>What Happens When You Run <code>git init</code></h3>
+
+        <div class="comparison-grid">
+          <div class="comparison-card bad">
+            <h4 style="color: var(--accent-red);">📁 Before <code>git init</code></h4>
+            <div class="file-tree" style="border: none; padding: 0; background: transparent;">
+              <div class="file-tree-item folder">📁 my-project/</div>
+              <div class="file-tree-item file" style="padding-left: 20px;">📄 index.html</div>
+              <div class="file-tree-item file" style="padding-left: 20px;">📄 style.css</div>
+              <div class="file-tree-item file" style="padding-left: 20px;">📄 app.js</div>
+            </div>
+            <p style="font-size: var(--fs-sm); color: var(--text-muted); margin-top: var(--space-sm);">Just a normal folder. Git knows nothing about it.</p>
+          </div>
+          <div class="comparison-card good">
+            <h4 style="color: var(--accent-green);">📁 After <code>git init</code></h4>
+            <div class="file-tree" style="border: none; padding: 0; background: transparent;">
+              <div class="file-tree-item folder">📁 my-project/</div>
+              <div class="file-tree-item git" style="padding-left: 20px;">📁 .git/ ← Git's brain! (hidden)</div>
+              <div class="file-tree-item file" style="padding-left: 20px;">📄 index.html</div>
+              <div class="file-tree-item file" style="padding-left: 20px;">📄 style.css</div>
+              <div class="file-tree-item file" style="padding-left: 20px;">📄 app.js</div>
+            </div>
+            <p style="font-size: var(--fs-sm); color: var(--text-muted); margin-top: var(--space-sm);">Now Git is watching! A hidden <code>.git</code> folder is created.</p>
+          </div>
+        </div>
+
+        <div class="analogy-card">
+          <div class="analogy-title">Real-World Analogy</div>
+          <p>Running <code>git init</code> is like installing a security camera in your project folder. It doesn't change your files — it just starts watching and recording every change from now on. The <code>.git</code> folder is where Git stores all its recordings.</p>
+        </div>
+
+        <h3>Try It Yourself</h3>
+        <div class="terminal-sim" data-commands='{
+          "git init": "Initialized empty Git repository in /Users/you/my-project/.git/",
+          "ls -la": "total 24\ndrwxr-xr-x  6 you  staff   192 Jun 22 10:00 .\ndrwxr-xr-x  5 you  staff   160 Jun 22 09:55 ..\ndrwxr-xr-x  9 you  staff   288 Jun 22 10:00 .git\n-rw-r--r--  1 you  staff   245 Jun 22 09:58 index.html\n-rw-r--r--  1 you  staff   128 Jun 22 09:58 style.css\n-rw-r--r--  1 you  staff    90 Jun 22 09:58 app.js",
+          "git status": "On branch main\n\nNo commits yet\n\nUntracked files:\n  (use \"git add <file>...\" to include in what will be committed)\n\n\tindex.html\n\tstyle.css\n\tapp.js\n\nnothing added to commit but untracked files present (use \"git add\" to track)"
+        }'>
+          <div class="terminal-sim-header">
+            <div class="command-block-dots"><span></span><span></span><span></span></div>
+            <span class="terminal-sim-title">Terminal — my-project</span>
+          </div>
+          <div class="terminal-sim-body">
+            <div class="terminal-sim-input-line">
+              <span class="terminal-sim-prompt">$ </span>
+              <input type="text" class="terminal-sim-input" placeholder="Type a command..." aria-label="Terminal input">
+            </div>
+          </div>
+          <div class="terminal-sim-buttons">
+            <button class="terminal-sim-btn" data-cmd="git init">git init</button>
+            <button class="terminal-sim-btn" data-cmd="ls -la">ls -la</button>
+            <button class="terminal-sim-btn" data-cmd="git status">git status</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Key Takeaways -->
+      <section class="animate-on-view">
+        <h2>Key Takeaways</h2>
+        <div class="success-box">
+          <p><strong>🎉 You now understand what Git is!</strong> Here's a quick recap:</p>
+        </div>
+        <ul>
+          <li><strong>Git is a Version Control System</strong> — it tracks changes to your files over time</li>
+          <li><strong>It solves the "final_v2_FINAL" problem</strong> — one file, infinite saved states</li>
+          <li><strong><code>git init</code></strong> turns any folder into a Git-tracked repository</li>
+          <li><strong>The <code>.git</code> folder</strong> is Git's hidden brain — don't delete it!</li>
+          <li><strong>Git is free, fast, and used everywhere</strong> — it's the industry standard</li>
+        </ul>
+      </section>
+
+      <nav class="page-nav" aria-label="Page navigation">
+        <a href="index.html" class="page-nav-link prev">
+          <span class="page-nav-label">← Previous</span>
+          <span class="page-nav-title">Welcome</span>
+        </a>
+        <a href="page-02-git-vs-github.html" class="page-nav-link next">
+          <span class="page-nav-label">Next Concept →</span>
+          <span class="page-nav-title">Git vs GitHub</span>
+        </a>
+      </nav>
+
+      <footer class="page-footer">
+        <p>Chapter 1 of 20 — Git & GitHub Visual Guide</p>
+      </footer>
+    </div>
+  </main>
+  <script src="main.js"></script>
+</body>
+</html>
